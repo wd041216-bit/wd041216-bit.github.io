@@ -298,6 +298,21 @@ h3 {
   line-height: 1.35;
 }
 
+.location-pair {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.location-pair strong {
+  flex: 1 1 128px;
+  min-height: 44px;
+  padding: 10px 12px;
+  background: var(--muted-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
 .section-heading {
   display: grid;
   gap: 4px;
