@@ -1,245 +1,601 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta
-      name="description"
-      content="Da Wei - Informatics student at the University of Washington focused on AI systems, LLM agents, evaluation, multimodal reasoning, and workflow automation."
-    >
-    <title>Da Wei - Research Assistant CV</title>
-    <link rel="preconnect" href="https://github.com">
-    <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light dark" />
+<title>Da Wei — AI Researcher</title>
+<style>
+  :root {
+    --seed-bg: #f5f5f7;
+    --seed-fg: #1d1d1f;
+    --seed-primary: #0071e3;
+    --seed-accent: #6f63ff;
+    --seed-surface: #ffffff;
+    --seed-radius: 26px;
 
-    <aside class="sidebar" aria-label="Primary navigation">
-      <a class="brand" href="#top" aria-label="Da Wei home">
-        <span class="brand-mark">DW</span>
-        <span>
-          <strong>Da Wei</strong>
-          <small>Research CV</small>
-        </span>
+    --space: 16px;
+    --scale: 1;
+
+    --bg: var(--seed-bg);
+    --fg: var(--seed-fg);
+    --primary: var(--seed-primary);
+    --accent: var(--seed-accent);
+    --surface: var(--seed-surface);
+    --radius: var(--seed-radius);
+
+    --muted: color-mix(in srgb, var(--fg) 60%, var(--bg));
+    --faint: color-mix(in srgb, var(--fg) 46%, var(--bg));
+    --hairline: color-mix(in srgb, var(--fg) 14%, transparent);
+
+    --glass: color-mix(in srgb, var(--surface) 56%, transparent);
+    --glass-strong: color-mix(in srgb, var(--surface) 82%, transparent);
+    --glass-border: color-mix(in srgb, var(--surface) 50%, color-mix(in srgb, var(--fg) 10%, transparent));
+    --glass-hi: color-mix(in srgb, #ffffff 55%, transparent);
+
+    --primary-soft: color-mix(in srgb, var(--primary) 12%, var(--bg));
+
+    --glow-a: color-mix(in srgb, var(--primary) 60%, var(--accent));
+    --glow-b: color-mix(in srgb, var(--accent) 72%, var(--primary));
+
+    --shadow-sm: 0 1px 2px color-mix(in srgb, var(--fg) 5%, transparent), 0 10px 24px color-mix(in srgb, var(--fg) 7%, transparent);
+    --shadow-lg: 0 2px 6px color-mix(in srgb, var(--fg) 6%, transparent), 0 28px 70px color-mix(in srgb, var(--fg) 10%, transparent);
+
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --display: clamp(3.35rem, 8.5vw, 6.6rem);
+    --h2: clamp(2rem, 4.4vw, 3.2rem);
+    --body: 1.0625rem;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.55;
+    font-size: var(--body);
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--primary); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---- ambient background ---- */
+  .bg {
+    position: fixed; inset: 0; z-index: -2;
+    overflow: hidden; pointer-events: none;
+    background:
+      radial-gradient(58% 52% at 16% 10%, var(--glow-a) 0%, transparent 64%),
+      radial-gradient(48% 46% at 86% 18%, var(--glow-b) 0%, transparent 60%),
+      radial-gradient(46% 44% at 40% 100%, color-mix(in srgb, var(--glow-a) 46%, var(--bg)) 0%, transparent 62%),
+      var(--bg);
+  }
+  .grain {
+    position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .5;
+    background-image: radial-gradient(color-mix(in srgb, var(--fg) 3%, transparent) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  /* ---- layout ---- */
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 calc(var(--space) * 1.5); }
+
+  /* ---- nav ---- */
+  .nav {
+    position: fixed; top: calc(var(--space) * 0.9); left: 50%; transform: translateX(-50%);
+    width: min(1160px, calc(100% - calc(var(--space) * 2)));
+    display: flex; align-items: center; justify-content: space-between;
+    padding: calc(var(--space) * 0.7) calc(var(--space) * 1.1);
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--bg) 64%, transparent);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(22px) saturate(180%);
+    -webkit-backdrop-filter: blur(22px) saturate(180%);
+    box-shadow: var(--shadow-sm);
+    z-index: 50;
+  }
+  .brand {
+    display: flex; align-items: center; gap: calc(var(--space) * 0.7);
+    font-weight: 600; letter-spacing: -0.02em; color: var(--fg);
+  }
+  .brand .mark {
+    width: 32px; height: 32px; border-radius: 9px; display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: #fff; font-size: 12px; font-weight: 700; letter-spacing: .02em;
+    box-shadow: 0 4px 14px color-mix(in srgb, var(--primary) 35%, transparent);
+  }
+  .nav-links { display: flex; align-items: center; gap: calc(var(--space) * 0.4); }
+  .nav-links a {
+    color: var(--muted); font-size: .9rem; font-weight: 500;
+    padding: calc(var(--space) * 0.4) calc(var(--space) * 0.75);
+    border-radius: 999px; transition: color .2s, background .2s;
+  }
+  .nav-links a:hover { color: var(--fg); background: var(--primary-soft); text-decoration: none; }
+  .lang-toggle {
+    border: 1px solid var(--hairline); background: var(--glass);
+    color: var(--fg); font-family: inherit; font-size: .82rem; font-weight: 600;
+    padding: calc(var(--space) * 0.4) calc(var(--space) * 0.8);
+    border-radius: 999px; cursor: pointer; backdrop-filter: blur(10px);
+    transition: transform .15s, background .15s;
+  }
+  .lang-toggle:hover { transform: translateY(-1px); background: var(--glass-strong); }
+  @media (max-width: 640px) {
+    .nav-links a:not(.hidden-m) { display: none; }
+  }
+
+  /* ---- hero ---- */
+  .hero { padding-top: calc(var(--space) * 10); padding-bottom: calc(var(--space) * 6); text-align: center; }
+  .status {
+    display: inline-flex; align-items: center; gap: calc(var(--space) * 0.55);
+    font-size: .84rem; font-weight: 500; color: var(--muted);
+    padding: calc(var(--space) * 0.45) calc(var(--space) * 0.95);
+    border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px); margin-bottom: calc(var(--space) * 2.2);
+  }
+  .status .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: #30d158;
+    box-shadow: 0 0 0 0 color-mix(in srgb, #30d158 45%, transparent);
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 color-mix(in srgb, #30d158 40%, transparent); }
+    70% { box-shadow: 0 0 0 8px transparent; }
+    100% { box-shadow: 0 0 0 0 transparent; }
+  }
+
+  h1.name {
+    font-size: calc(var(--display) * var(--scale));
+    line-height: 1.02; font-weight: 650; letter-spacing: -0.035em;
+    background: linear-gradient(118deg, var(--fg) 12%, var(--primary) 52%, var(--accent) 92%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    margin-bottom: calc(var(--space) * 1.6);
+  }
+  .hero-title {
+    font-size: calc(clamp(1.35rem, 3vw, 2.15rem) * var(--scale));
+    font-weight: 500; line-height: 1.28; letter-spacing: -0.02em;
+    color: var(--fg); max-width: 760px; margin: 0 auto calc(var(--space) * 1.4);
+  }
+  .hero-sub {
+    color: var(--muted); font-size: calc(1.05rem * var(--scale));
+    line-height: 1.62; max-width: 720px; margin: 0 auto calc(var(--space) * 2.4);
+  }
+
+  .hero-cta { display: flex; gap: calc(var(--space) * 0.8); justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: calc(var(--space) * 0.5);
+    font-family: inherit; font-weight: 600; font-size: var(--body);
+    padding: calc(var(--space) * 0.8) calc(var(--space) * 1.5);
+    border-radius: 999px; cursor: pointer; text-decoration: none;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-2px); }
+  .btn-primary { background: var(--primary); color: #fff; border: none; box-shadow: 0 10px 26px color-mix(in srgb, var(--primary) 32%, transparent); }
+  .btn-primary:hover { background: color-mix(in srgb, var(--primary) 88%, #000); }
+  .btn-ghost { background: var(--glass); color: var(--fg); border: 1px solid var(--glass-border); backdrop-filter: blur(16px); }
+  .btn-ghost:hover { background: var(--glass-strong); }
+
+  .hero-strip {
+    display: flex; flex-wrap: wrap; gap: calc(var(--space) * 0.6); justify-content: center;
+    margin-top: calc(var(--space) * 3.4);
+  }
+  .chip {
+    font-size: .84rem; font-weight: 500; color: var(--muted);
+    padding: calc(var(--space) * 0.4) calc(var(--space) * 0.9);
+    border-radius: 999px; background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+  }
+
+  /* ---- sections ---- */
+  section { padding: calc(var(--space) * 5.5) 0; }
+  .sec-label {
+    display: inline-block; font-size: .78rem; font-weight: 650; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--primary);
+    margin-bottom: calc(var(--space) * 1.2);
+  }
+  .sec-head { font-size: calc(var(--h2) * var(--scale)); font-weight: 620; letter-spacing: -0.03em; line-height: 1.08; margin-bottom: calc(var(--space) * 2.4); }
+  .sec-lead { color: var(--muted); max-width: 680px; font-size: calc(1.05rem * var(--scale)); margin-top: calc(var(--space) * -1.4); margin-bottom: calc(var(--space) * 3); }
+
+  .card {
+    position: relative; border-radius: var(--radius);
+    background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    box-shadow: var(--shadow-sm);
+    padding: calc(var(--space) * 2);
+    overflow: hidden;
+  }
+  .card::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-hi), transparent);
+    opacity: .8;
+  }
+  .card:hover { box-shadow: var(--shadow-lg); }
+
+  /* about */
+  .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: calc(var(--space) * 1.5); align-items: start; }
+  .about p + p { margin-top: calc(var(--space) * 1.1); }
+  .edu-tile {
+    border-radius: var(--radius); background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(22px); padding: calc(var(--space) * 1.8);
+    box-shadow: var(--shadow-sm);
+  }
+  .edu-tile h3 { font-size: 1.1rem; font-weight: 620; margin-bottom: calc(var(--space) * 0.5); }
+  .edu-tile p { color: var(--muted); font-size: .95rem; }
+  .edu-tile .row { display: flex; justify-content: space-between; color: var(--faint); font-size: .82rem; margin-top: calc(var(--space) * 1.2); padding-top: calc(var(--space) * 0.9); border-top: 1px solid var(--hairline); }
+
+  /* focus */
+  .tracks { display: grid; grid-template-columns: repeat(3, 1fr); gap: calc(var(--space) * 1.5); }
+  .track { padding: calc(var(--space) * 2.2); display: flex; flex-direction: column; gap: calc(var(--space) * 1.3); }
+  .track .tag {
+    align-self: flex-start; font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--primary);
+    background: var(--primary-soft); padding: calc(var(--space) * 0.35) calc(var(--space) * 0.85);
+    border-radius: 999px;
+  }
+  .track h3 { font-size: calc(1.55rem * var(--scale)); font-weight: 620; letter-spacing: -0.02em; }
+  .track > p { color: var(--muted); }
+  .track ul { list-style: none; display: flex; flex-direction: column; gap: calc(var(--space) * 0.75); }
+  .track li { position: relative; padding-left: calc(var(--space) * 1.2); color: var(--fg); font-size: .97rem; }
+  .track li::before {
+    content: ""; position: absolute; left: 0; top: .52em; width: 7px; height: 7px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+  }
+
+  /* experience */
+  .timeline { display: flex; flex-direction: column; gap: calc(var(--space) * 0.9); }
+  .exp { display: grid; grid-template-columns: 150px 1fr; gap: calc(var(--space) * 1.4); padding: calc(var(--space) * 1.7) calc(var(--space) * 2); }
+  .exp-period { color: var(--faint); font-size: .8rem; font-weight: 500; padding-top: 4px; white-space: nowrap; }
+  .exp-body h3 { font-size: 1.16rem; font-weight: 620; letter-spacing: -0.01em; }
+  .exp-org { color: var(--muted); font-size: .92rem; margin-top: 3px; }
+  .exp-desc { color: var(--fg); font-size: .97rem; margin-top: calc(var(--space) * 0.7); max-width: 760px; }
+
+  /* skills */
+  .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--space) * 1.1); }
+  .skill { padding: calc(var(--space) * 1.7); }
+  .skill h3 { font-size: 1.02rem; font-weight: 620; margin-bottom: calc(var(--space) * 1.1); }
+  .skill .tags { display: flex; flex-wrap: wrap; gap: calc(var(--space) * 0.5); }
+  .skill .tags span {
+    font-size: .8rem; color: var(--muted); padding: calc(var(--space) * 0.3) calc(var(--space) * 0.65);
+    background: color-mix(in srgb, var(--fg) 4%, transparent); border: 1px solid var(--hairline);
+    border-radius: 8px;
+  }
+
+  /* contact */
+  .contact { text-align: center; }
+  .contact .sec-lead { margin-left: auto; margin-right: auto; }
+  .contact-panel {
+    max-width: 720px; margin: calc(var(--space) * 2) auto 0;
+    padding: calc(var(--space) * 3); border-radius: var(--radius);
+    background: var(--glass); border: 1px solid var(--glass-border);
+    backdrop-filter: blur(26px) saturate(160%); box-shadow: var(--shadow-sm); text-align: left;
+  }
+  .contact-panel h3 { font-size: calc(1.5rem * var(--scale)); font-weight: 620; letter-spacing: -0.02em; margin-bottom: calc(var(--space) * 0.7); }
+  .contact-panel p { color: var(--muted); margin-bottom: calc(var(--space) * 1.4); }
+  .contact-links { display: flex; flex-wrap: wrap; gap: calc(var(--space) * 0.7); }
+
+  footer { padding: calc(var(--space) * 3.5) 0 calc(var(--space) * 2.5); text-align: center; color: var(--faint); font-size: .82rem; border-top: 1px solid var(--hairline); }
+
+  /* reveal */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+  /* responsive */
+  @media (max-width: 960px) {
+    .tracks, .about-grid { grid-template-columns: 1fr; }
+    .skills { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    :root { --space: 13px; }
+    .exp { grid-template-columns: 1fr; gap: calc(var(--space) * 0.5); }
+    .exp-period { padding-top: 0; }
+    .skills { grid-template-columns: 1fr; }
+    .nav-links a { display: none; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header data-component="nav">
+    <nav class="nav wrap" aria-label="Primary navigation">
+      <a class="brand" href="#top">
+        <span class="mark">DW</span>
+        <span>Da Wei</span>
       </a>
-
-      <nav class="side-nav">
-        <a href="#top">Profile</a>
-        <a href="#research">Research</a>
-        <a href="#projects">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-
-      <div class="sidebar-note">
-        <p>University of Washington</p>
-        <p>Informatics · Expected 2027</p>
+      <div class="nav-links">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#work" data-i18n="nav.work">Research</a>
+        <a href="#skills" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">中文</button>
       </div>
-    </aside>
+    </nav>
+  </header>
 
-    <header class="mobile-bar" aria-label="Mobile navigation">
-      <a class="brand compact" href="#top" aria-label="Da Wei home">
-        <span class="brand-mark">DW</span>
-        <span>
-          <strong>Da Wei</strong>
-          <small>Research CV</small>
-        </span>
-      </a>
-      <a class="mobile-contact" href="mailto:wd041216@uw.edu">Email</a>
-    </header>
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero wrap" data-component="hero">
+      <div class="status reveal">
+        <span class="dot"></span>
+        <span data-i18n="hero.status">Open to research collaboration &amp; RA roles</span>
+      </div>
+      <h1 class="name reveal">Da Wei</h1>
+      <p class="hero-title reveal" data-i18n="hero.title">Building intelligence that moves through the world.</p>
+      <p class="hero-sub reveal" data-i18n="hero.sub">UW Informatics undergraduate at the Multimodal Intelligence Lab (MILab) — researching how models perceive, act, and generate, from world-model VLA to speculative decoding and agentic systems.</p>
+      <div class="hero-cta reveal">
+        <a class="btn btn-primary" href="#work" data-i18n="hero.cta1">Explore research</a>
+        <a class="btn btn-ghost" href="#experience" data-i18n="hero.cta2">View experience</a>
+      </div>
+      <div class="hero-strip reveal" aria-label="Focus areas">
+        <span class="chip">World-model VLA</span>
+        <span class="chip">Vision-Language-Action</span>
+        <span class="chip">Speculative Decoding</span>
+        <span class="chip">AI Agents</span>
+        <span class="chip">LLM Inference</span>
+      </div>
+    </section>
 
-    <main id="main-content" class="page-shell">
-      <section id="top" class="profile-section" aria-labelledby="intro-title">
-        <div class="breadcrumb" aria-label="Page context">
-          <a href="https://github.com/wd041216-bit">GitHub</a>
-          <span aria-hidden="true">/</span>
-          <span>Research CV</span>
+    <!-- ABOUT -->
+    <section class="wrap" id="about" data-component="section">
+      <span class="sec-label" data-i18n="about.label">About</span>
+      <h2 class="sec-head" data-i18n="about.heading">Research first, engineering underneath.</h2>
+      <div class="about-grid">
+        <div>
+          <p data-i18n="about.p1">I'm an Informatics undergraduate at the University of Washington (Seattle), expected to graduate in 2027. At the Multimodal Intelligence Lab (MILab), I research world-model vision-language-action (VLA) and speculative decoding, alongside AI agents that plan and act.</p>
+          <p data-i18n="about.p2">I also have a production engineering background — shipping full-stack systems used by hundreds of people — which keeps my research grounded in systems that actually run.</p>
         </div>
-
-        <div class="profile-header">
-          <img
-            class="avatar"
-            src="https://github.com/wd041216-bit.png?size=320"
-            alt="Da Wei GitHub profile avatar"
-            width="160"
-            height="160"
-          >
-          <div>
-            <p class="eyebrow">University of Washington · Informatics</p>
-            <h1 id="intro-title">Da Wei</h1>
-            <p class="lead">
-              I am an Informatics undergraduate focused on AI systems, LLM agents, benchmark and
-              evaluation, multimodal reasoning, and AI-assisted software workflows.
-            </p>
-            <div class="action-row" aria-label="Quick links">
-              <a class="button primary" href="mailto:wd041216@uw.edu">wd041216@uw.edu</a>
-              <a class="button" href="https://github.com/wd041216-bit">GitHub</a>
-            </div>
+        <div class="edu-tile" data-component="card">
+          <h3 data-i18n="about.eduTitle">Education</h3>
+          <p>University of Washington · Informatics</p>
+          <p style="margin-top:6px;color:var(--faint);font-size:.85rem">Seattle, WA · Shenzhen, China</p>
+          <div class="row">
+            <span data-i18n="about.eduExpected">Expected graduation</span>
+            <span>2027</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="fact-grid" aria-label="Profile summary">
-          <div class="fact-card">
-            <span>School</span>
-            <strong>University of Washington</strong>
+    <!-- RESEARCH FOCUS -->
+    <section class="wrap" id="work" data-component="section">
+      <span class="sec-label" data-i18n="focus.label">Research focus</span>
+      <h2 class="sec-head" data-i18n="focus.heading">What I'm working on.</h2>
+      <div class="tracks">
+        <article class="card track" data-component="card">
+          <span class="tag" data-i18n="focus1.tag">MILab · UW</span>
+          <h3 data-i18n="focus1.title">World-model VLA</h3>
+          <p data-i18n="focus1.desc">Vision-language-action world models that ground perception in action.</p>
+          <ul>
+            <li data-i18n="focus1.i1">World-model representation</li>
+            <li data-i18n="focus1.i2">Action-conditioned prediction</li>
+          </ul>
+        </article>
+        <article class="card track" data-component="card">
+          <span class="tag" data-i18n="focus2.tag">MILab · UW</span>
+          <h3 data-i18n="focus2.title">Speculative Decoding</h3>
+          <p data-i18n="focus2.desc">Making LLM inference faster by decoupling draft from verification.</p>
+          <ul>
+            <li data-i18n="focus2.i1">Draft–verify architectures</li>
+            <li data-i18n="focus2.i2">Inference efficiency</li>
+          </ul>
+        </article>
+        <article class="card track" data-component="card">
+          <span class="tag" data-i18n="focus3.tag">Core interest</span>
+          <h3 data-i18n="focus3.title">AI Agents</h3>
+          <p data-i18n="focus3.desc">Agents that plan, use tools, and act over long horizons.</p>
+          <ul>
+            <li data-i18n="focus3.i1">Planning &amp; tool use</li>
+            <li data-i18n="focus3.i2">Long-horizon reasoning</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section class="wrap" id="experience" data-component="section">
+      <span class="sec-label" data-i18n="exp.label">Experience</span>
+      <h2 class="sec-head" data-i18n="exp.heading">Selected work.</h2>
+      <div class="timeline">
+        <article class="card exp" data-component="card">
+          <div class="exp-period">Apr 2026 — Present</div>
+          <div class="exp-body">
+            <h3 data-i18n="exp1.role">Research Assistant</h3>
+            <p class="exp-org">Multimodal Intelligence Lab (MILab) · UW</p>
+            <p class="exp-desc" data-i18n="exp1.desc">Research world-model vision-language-action (VLA) and speculative decoding for efficient, grounded multimodal systems.</p>
           </div>
-          <div class="fact-card">
-            <span>Location</span>
-            <div class="location-pair" aria-label="Seattle, WA and Shenzhen, China">
-              <strong>Seattle, WA</strong>
-              <strong>Shenzhen, China</strong>
-            </div>
+        </article>
+        <article class="card exp" data-component="card">
+          <div class="exp-period">Dec 2025 — Present</div>
+          <div class="exp-body">
+            <h3 data-i18n="exp2.role">Project Maintainer</h3>
+            <p class="exp-org">Wordplay · with Prof. Amy J. Ko</p>
+            <p class="exp-desc" data-i18n="exp2.desc">Improve usability of an open-source educational programming language and IDE; propose, implement, and maintain learner-facing changes.</p>
           </div>
-          <div class="fact-card">
-            <span>Major</span>
-            <strong>Informatics</strong>
+        </article>
+        <article class="card exp" data-component="card">
+          <div class="exp-period">Mar — Jun 2025</div>
+          <div class="exp-body">
+            <h3 data-i18n="exp3.role">Group Leader</h3>
+            <p class="exp-org">Global social media sentiment &amp; addiction study</p>
+            <p class="exp-desc" data-i18n="exp3.desc">Processed ~1,000 social media posts with R/tidyverse; ran correlation analysis between screen-time indicators and negative sentiment.</p>
           </div>
+        </article>
+        <article class="card exp" data-component="card">
+          <div class="exp-period">Oct 2025 — Present</div>
+          <div class="exp-body">
+            <h3 data-i18n="exp4.role">Developer &amp; Maintainer</h3>
+            <p class="exp-org">Yucheng New Material · Portal &amp; ERP</p>
+            <p class="exp-desc" data-i18n="exp4.desc">Built a multilingual company portal and custom ERP for hundreds of users, focusing on data structure, workflow design, and usability.</p>
+          </div>
+        </article>
+        <article class="card exp" data-component="card">
+          <div class="exp-period">Jan — Mar 2026</div>
+          <div class="exp-body">
+            <h3 data-i18n="exp5.role">SEO Intern</h3>
+            <p class="exp-org">Shanghai APOBAI</p>
+            <p class="exp-desc" data-i18n="exp5.desc">Built an AI-assisted automated SEO workflow that raised team efficiency ≈50% and organic traffic ≈10%.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="wrap" id="skills" data-component="section">
+      <span class="sec-label" data-i18n="skills.label">Skills</span>
+      <h2 class="sec-head" data-i18n="skills.heading">What I work with.</h2>
+      <div class="skills">
+        <div class="card skill" data-component="card">
+          <h3 data-i18n="sk1.title">AI &amp; Systems</h3>
+          <div class="tags"><span>World-model VLA</span><span>Vision-Language-Action</span><span>Speculative Decoding</span><span>AI Agents</span><span>LLM Inference</span></div>
         </div>
-      </section>
-
-      <section id="research" class="content-section" aria-labelledby="research-title">
-        <div class="section-heading">
-          <p class="eyebrow">Research Interests</p>
-          <h2 id="research-title">Current Focus</h2>
+        <div class="card skill" data-component="card">
+          <h3 data-i18n="sk2.title">Engineering</h3>
+          <div class="tags"><span>Java</span><span>Python</span><span>Full-stack Web</span><span>API Integration</span><span>Workflow Automation</span></div>
         </div>
-        <div class="tag-list" aria-label="Research interests">
-          <span>AI systems</span>
-          <span>LLM agents</span>
-          <span>Benchmark and evaluation</span>
-          <span>Multimodal reasoning</span>
-          <span>Human-centered AI</span>
-          <span>AI-assisted software</span>
-          <span>Workflow automation</span>
+        <div class="card skill" data-component="card">
+          <h3 data-i18n="sk3.title">Data &amp; Analysis</h3>
+          <div class="tags"><span>R</span><span>tidyverse</span><span>ggplot2</span><span>Data Wrangling</span><span>Visualization</span><span>Statistical Inference</span></div>
         </div>
-      </section>
-
-      <section id="projects" class="content-section" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="eyebrow">Research and Project Experience</p>
-          <h2 id="projects-title">Selected Work</h2>
+        <div class="card skill" data-component="card">
+          <h3 data-i18n="sk4.title">Math &amp; Reasoning</h3>
+          <div class="tags"><span>Multivariable Calculus</span><span>Linear Algebra</span><span>Statistical Reasoning</span><span>Correlation Analysis</span></div>
         </div>
+      </div>
+    </section>
 
-        <div class="experience-list">
-          <article class="experience-item">
-            <div class="item-kicker">
-              <span>Apr 2026 - Present</span>
-              <strong>Research Assistant</strong>
-            </div>
-            <div>
-              <h3>Multimodal Intelligence Lab (MILab)</h3>
-              <p>
-                Work with the <a href="https://depts.washington.edu/uwmilab/people">Multimodal Intelligence Lab (MILab)</a> at the University of Washington on multimodal AI, embodied intelligence, evaluation, and deployable intelligent systems.
-              </p>
-              <p>
-                Contribute to ongoing experimentation, evaluation, and practical system building across the lab's research directions.
-              </p>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <div class="item-kicker">
-              <span>Dec 2025 - Present</span>
-              <strong>Project Maintainer</strong>
-            </div>
-            <div>
-              <h3>Wordplay - Open-Source Educational Programming Language and IDE</h3>
-              <p>
-                Contribute to Wordplay, an open-source educational programming language, IDE, and
-                platform for accessible interactive typography at the University of Washington with
-                Professor Amy J. Ko.
-              </p>
-              <p>
-                Propose product and usability improvements, translate improvement ideas into
-                maintainable implementation work, and help keep the project usable for learners.
-              </p>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <div class="item-kicker">
-              <span>Mar 2025 - Jun 2025</span>
-              <strong>Group Leader</strong>
-            </div>
-            <div>
-              <h3>Global Social Media Sentiment and Addiction Study</h3>
-              <p>
-                Led a class research project analyzing global social media sentiment and
-                screen-time-related indicators.
-              </p>
-              <p>
-                Processed approximately 1,000 social media text entries using R and tidyverse, then
-                conducted correlation analysis between screen-time indicators and negative sentiment
-                across regions.
-              </p>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <div class="item-kicker">
-              <span>Oct 2025 - Present</span>
-              <strong>Developer and Maintainer</strong>
-            </div>
-            <div>
-              <h3>Yucheng New Material Company Portal and Custom ERP System</h3>
-              <p>
-                Built and continue to maintain a multilingual company portal for a synthetic leather
-                materials business.
-              </p>
-              <p>
-                Built a custom ERP system designed to support hundreds of users across business
-                operations, focusing on data structure, workflow design, interface usability, and
-                maintainability.
-              </p>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <div class="item-kicker">
-              <span>Jan 2026 - Mar 2026</span>
-              <strong>SEO Department Intern</strong>
-            </div>
-            <div>
-              <h3>Shanghai APOBAI - SEO Automation System</h3>
-              <p>
-                Built an AI-assisted automated SEO workflow during a three-month internship.
-                Improved team efficiency by approximately 50% and increased SEO organic traffic by
-                approximately 10%.
-              </p>
-            </div>
-          </article>
+    <!-- CONTACT -->
+    <section class="wrap contact" id="contact" data-component="section">
+      <span class="sec-label" data-i18n="contact.label">Contact</span>
+      <h2 class="sec-head" data-i18n="contact.heading">Let's talk research.</h2>
+      <div class="contact-panel" data-component="card">
+        <h3 data-i18n="contact.h">Say hello.</h3>
+        <p data-i18n="contact.p">Open to research collaboration, RA roles, and conversations on world models, agents, and inference — or just a good discussion about intelligent systems.</p>
+        <div class="contact-links">
+          <a class="btn btn-primary" href="mailto:wd041216@uw.edu" data-i18n="contact.c1">Email me</a>
+          <a class="btn btn-ghost" href="https://github.com/wd041216-bit" target="_blank" rel="noopener" data-i18n="contact.c2">GitHub</a>
         </div>
-      </section>
+      </div>
+    </section>
+  </main>
 
-      <section id="skills" class="content-section" aria-labelledby="skills-title">
-        <div class="section-heading">
-          <p class="eyebrow">Technical Skills</p>
-          <h2 id="skills-title">Tools I Use</h2>
-        </div>
+  <footer>
+    <div class="wrap" data-i18n="footer.note">© 2026 Da Wei · Designed in Seattle &amp; Shenzhen</div>
+  </footer>
 
-        <div class="skill-grid">
-          <article class="skill-card">
-            <h3>Programming</h3>
-            <p>Java, Python, full-stack web development, ERP and workflow system development.</p>
-          </article>
-          <article class="skill-card">
-            <h3>Data and Analysis</h3>
-            <p>R, tidyverse, ggplot2, data wrangling, visualization, statistical inference, reproducible analysis.</p>
-          </article>
-          <article class="skill-card">
-            <h3>Math and Reasoning</h3>
-            <p>Multivariable calculus, linear algebra, statistical reasoning, correlation analysis.</p>
-          </article>
-        </div>
-      </section>
+<script>
+  const I18N = {
+    en: {
+      "nav.about": "About", "nav.work": "Research", "nav.skills": "Skills", "nav.contact": "Contact",
+      "hero.status": "Open to research collaboration & RA roles",
+      "hero.title": "Building intelligence that moves through the world.",
+      "hero.sub": "UW Informatics undergraduate at the Multimodal Intelligence Lab (MILab) — researching how models perceive, act, and generate, from world-model VLA to speculative decoding and agentic systems.",
+      "hero.cta1": "Explore research", "hero.cta2": "View experience",
+      "about.label": "About", "about.heading": "Research first, engineering underneath.",
+      "about.p1": "I'm an Informatics undergraduate at the University of Washington (Seattle), expected to graduate in 2027. At the Multimodal Intelligence Lab (MILab), I research world-model vision-language-action (VLA) and speculative decoding, alongside AI agents that plan and act.",
+      "about.p2": "I also have a production engineering background — shipping full-stack systems used by hundreds of people — which keeps my research grounded in systems that actually run.",
+      "about.eduTitle": "Education", "about.eduExpected": "Expected graduation",
+      "focus.label": "Research focus", "focus.heading": "What I'm working on.",
+      "focus1.tag": "MILab · UW", "focus1.title": "World-model VLA",
+      "focus1.desc": "Vision-language-action world models that ground perception in action.",
+      "focus1.i1": "World-model representation", "focus1.i2": "Action-conditioned prediction",
+      "focus2.tag": "MILab · UW", "focus2.title": "Speculative Decoding",
+      "focus2.desc": "Making LLM inference faster by decoupling draft from verification.",
+      "focus2.i1": "Draft–verify architectures", "focus2.i2": "Inference efficiency",
+      "focus3.tag": "Core interest", "focus3.title": "AI Agents",
+      "focus3.desc": "Agents that plan, use tools, and act over long horizons.",
+      "focus3.i1": "Planning & tool use", "focus3.i2": "Long-horizon reasoning",
+      "exp.label": "Experience", "exp.heading": "Selected work.",
+      "exp1.role": "Research Assistant", "exp1.desc": "Research world-model vision-language-action (VLA) and speculative decoding for efficient, grounded multimodal systems.",
+      "exp2.role": "Project Maintainer", "exp2.desc": "Improve usability of an open-source educational programming language and IDE; propose, implement, and maintain learner-facing changes.",
+      "exp3.role": "Group Leader", "exp3.desc": "Processed ~1,000 social media posts with R/tidyverse; ran correlation analysis between screen-time indicators and negative sentiment.",
+      "exp4.role": "Developer & Maintainer", "exp4.desc": "Built a multilingual company portal and custom ERP for hundreds of users, focusing on data structure, workflow design, and usability.",
+      "exp5.role": "SEO Intern", "exp5.desc": "Built an AI-assisted automated SEO workflow that raised team efficiency ≈50% and organic traffic ≈10%.",
+      "skills.label": "Skills", "skills.heading": "What I work with.",
+      "sk1.title": "AI & Systems", "sk2.title": "Engineering", "sk3.title": "Data & Analysis", "sk4.title": "Math & Reasoning",
+      "contact.label": "Contact", "contact.heading": "Let's talk research.", "contact.h": "Say hello.",
+      "contact.p": "Open to research collaboration, RA roles, and conversations on world models, agents, and inference — or just a good discussion about intelligent systems.",
+      "contact.c1": "Email me", "contact.c2": "GitHub",
+      "footer.note": "© 2026 Da Wei · Designed in Seattle & Shenzhen"
+    },
+    zh: {
+      "nav.about": "关于", "nav.work": "研究", "nav.skills": "能力", "nav.contact": "联系",
+      "hero.status": "开放科研合作与 RA 机会",
+      "hero.title": "构建能穿行于世界之中的智能。",
+      "hero.sub": "华盛顿大学 Informatics 本科生，就职于多模态智能实验室（MILab）——研究模型如何感知、行动与生成，覆盖世界模型 VLA、投机解码与 Agent 系统。",
+      "hero.cta1": "查看研究方向", "hero.cta2": "查看经历",
+      "about.label": "关于我", "about.heading": "研究为主，工程为底。",
+      "about.p1": "我是华盛顿大学（西雅图）Informatics 本科生，预计 2027 年毕业。在多模态智能实验室（MILab），我研究世界模型的视觉-语言-动作（VLA）与投机解码，以及能规划、能行动的 AI Agent。",
+      "about.p2": "我也有生产级工程背景——交付过被数百人使用的全栈系统——这让我的研究始终落在真正能跑的系统上。",
+      "about.eduTitle": "教育", "about.eduExpected": "预计毕业",
+      "focus.label": "研究方向", "focus.heading": "我目前在做什么。",
+      "focus1.tag": "MILab · 华盛顿大学", "focus1.title": "世界模型 VLA",
+      "focus1.desc": "视觉-语言-动作的世界模型，把感知扎根到行动中。",
+      "focus1.i1": "世界模型表示学习", "focus1.i2": "动作条件下的预测",
+      "focus2.tag": "MILab · 华盛顿大学", "focus2.title": "投机解码",
+      "focus2.desc": "通过把草稿与校验解耦，让 LLM 推理更快。",
+      "focus2.i1": "草稿—校验架构", "focus2.i2": "推理效率优化",
+      "focus3.tag": "核心兴趣", "focus3.title": "AI Agent",
+      "focus3.desc": "能规划、会用工具、能在长时间尺度行动的智能体。",
+      "focus3.i1": "规划与工具使用", "focus3.i2": "长程推理",
+      "exp.label": "经历", "exp.heading": "精选工作。",
+      "exp1.role": "研究助理", "exp1.desc": "研究世界模型的视觉-语言-动作（VLA）与投机解码，面向高效且具身对齐的多模态系统。",
+      "exp2.role": "项目维护者", "exp2.desc": "改进开源教育编程语言与 IDE 的可用性；提出、实现并维护面向学习者的改动。",
+      "exp3.role": "小组组长", "exp3.desc": "用 R/tidyverse 处理约 1,000 条社交媒体帖子；分析屏幕时间指标与负面情绪之间的相关性。",
+      "exp4.role": "开发与维护者", "exp4.desc": "为数百名用户打造多语种企业门户与定制 ERP，聚焦数据结构、工作流设计与可用性。",
+      "exp5.role": "SEO 实习生", "exp5.desc": "构建 AI 辅助的自动化 SEO 工作流，团队效率提升约 50%，自然流量提升约 10%。",
+      "skills.label": "能力", "skills.heading": "我用什么工作。",
+      "sk1.title": "AI 与系统", "sk2.title": "工程", "sk3.title": "数据与分析", "sk4.title": "数学与推理",
+      "contact.label": "联系", "contact.heading": "一起聊聊研究。", "contact.h": "打个招呼。",
+      "contact.p": "开放科研合作、RA 机会，以及关于世界模型、Agent 与推理的讨论——也欢迎聊聊智能系统。",
+      "contact.c1": "给我写信", "contact.c2": "GitHub",
+      "footer.note": "© 2026 Da Wei · 设计于西雅图与深圳"
+    }
+  };
 
-      <section id="contact" class="content-section contact-panel" aria-labelledby="contact-title">
-        <p class="eyebrow">Contact</p>
-        <h2 id="contact-title">Open to research collaboration, RA opportunities, and AI evaluation work.</h2>
-        <div class="action-row">
-          <a class="button primary" href="mailto:wd041216@uw.edu">Email</a>
-          <a class="button" href="https://github.com/wd041216-bit">GitHub</a>
-        </div>
-      </section>
-    </main>
-  </body>
+  let currentLang = 'en';
+  const toggle = document.getElementById('langToggle');
+
+  function applyLang(lang) {
+    currentLang = lang;
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (I18N[lang] && I18N[lang][key] != null) {
+        el.textContent = I18N[lang][key];
+      }
+    });
+    toggle.textContent = lang === 'en' ? '中文' : 'EN';
+    toggle.setAttribute('aria-label', lang === 'en' ? '切换为中文' : 'Switch to English');
+  }
+
+  toggle.addEventListener('click', () => {
+    applyLang(currentLang === 'en' ? 'zh' : 'en');
+  });
+
+  // Reveal on scroll
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals = document.querySelectorAll('.reveal');
+  if (!reduce && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
 </html>
