@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="color-scheme" content="light dark" />
-<title>Da Wei — Multimodal AI Research</title>
+<title>Da Wei — Embodied World Models</title>
 <style>
   :root {
     --seed-bg: #f5f5f7;
@@ -257,6 +257,14 @@
   .exp-body h3 { font-size: 1.16rem; font-weight: 620; letter-spacing: -0.01em; }
   .exp-org { color: var(--muted); font-size: .92rem; margin-top: 3px; }
   .exp-desc { color: var(--fg); font-size: .97rem; margin-top: calc(var(--space) * 0.7); max-width: 760px; }
+  .exp-project { margin-top: calc(var(--space) * 1.25); padding-top: calc(var(--space) * 1.05); border-top: 1px solid var(--hairline); }
+  .exp-project:first-of-type { margin-top: calc(var(--space) * 1.05); }
+  .project-head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space); }
+  .project-head h4 { font-size: 1rem; font-weight: 650; color: var(--fg); }
+  .project-head span { color: var(--primary); font-size: .76rem; font-weight: 620; text-align: right; }
+  .exp-list { margin-top: calc(var(--space) * .65); padding-left: calc(var(--space) * 1.2); display: grid; gap: calc(var(--space) * .36); }
+  .exp-list li { color: var(--muted); font-size: .91rem; padding-left: calc(var(--space) * .2); }
+  .exp-link { display: inline-block; margin-top: calc(var(--space) * .65); font-size: .86rem; font-weight: 600; }
 
   /* skills */
   .skills { display: grid; grid-template-columns: repeat(4, 1fr); gap: calc(var(--space) * 1.1); }
@@ -269,18 +277,16 @@
     border-radius: 8px;
   }
 
-  /* contact */
-  .contact { text-align: center; }
-  .contact .sec-lead { margin-left: auto; margin-right: auto; }
-  .contact-panel {
-    max-width: 720px; margin: calc(var(--space) * 2) auto 0;
-    padding: calc(var(--space) * 3); border-radius: var(--radius);
-    background: var(--glass); border: 1px solid var(--glass-border);
-    backdrop-filter: blur(26px) saturate(160%); box-shadow: var(--shadow-sm); text-align: left;
-  }
-  .contact-panel h3 { font-size: calc(1.5rem * var(--scale)); font-weight: 620; letter-spacing: -0.02em; margin-bottom: calc(var(--space) * 0.7); }
-  .contact-panel p { color: var(--muted); margin-bottom: calc(var(--space) * 1.4); }
-  .contact-links { display: flex; flex-wrap: wrap; gap: calc(var(--space) * 0.7); }
+  /* closing */
+  .closing { padding-top: calc(var(--space) * 4.5); padding-bottom: calc(var(--space) * 5); }
+  .closing-grid { display: grid; grid-template-columns: .82fr 1.18fr; gap: calc(var(--space) * 1.1); }
+  .closing-card { min-height: 272px; padding: calc(var(--space) * 2.2); display: flex; flex-direction: column; align-items: flex-start; }
+  .closing-card .sec-label { margin-bottom: calc(var(--space) * .75); }
+  .closing-card h2 { font-size: calc(clamp(1.75rem, 3vw, 2.35rem) * var(--scale)); font-weight: 620; letter-spacing: -.025em; line-height: 1.08; }
+  .interest-list { display: grid; grid-template-columns: 1fr 1fr; gap: calc(var(--space) * .65); width: 100%; margin-top: auto; }
+  .interest-list .chip { display: flex; align-items: center; min-height: 44px; border-radius: 14px; }
+  .contact-card p { color: var(--muted); max-width: 610px; margin-top: calc(var(--space) * 1); }
+  .contact-links { display: flex; flex-wrap: wrap; gap: calc(var(--space) * .7); margin-top: auto; padding-top: calc(var(--space) * 1.4); }
 
   footer { padding: calc(var(--space) * 3.5) 0 calc(var(--space) * 2.5); text-align: center; color: var(--faint); font-size: .82rem; border-top: 1px solid var(--hairline); }
 
@@ -293,12 +299,21 @@
   @media (max-width: 960px) {
     .tracks, .about-grid { grid-template-columns: 1fr; }
     .skills { grid-template-columns: 1fr 1fr; }
+    .closing-grid { grid-template-columns: 1fr; }
+    .closing-card { min-height: 0; }
+    .interest-list, .contact-links { margin-top: calc(var(--space) * 1.5); }
   }
   @media (max-width: 640px) {
     :root { --space: 13px; }
     .exp { grid-template-columns: 1fr; gap: calc(var(--space) * 0.5); }
     .exp-period { padding-top: 0; }
+    .project-head { align-items: flex-start; flex-direction: column; gap: calc(var(--space) * .35); }
+    .project-head span { text-align: left; }
     .skills { grid-template-columns: 1fr; }
+    .closing-card { padding: calc(var(--space) * 1.6); }
+    .interest-list { grid-template-columns: 1fr; }
+    .contact-links { width: 100%; }
+    .contact-links .btn { justify-content: center; flex: 1; }
     .nav-links a { display: none; }
   }
 </style>
@@ -316,6 +331,7 @@
       <div class="nav-links">
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#work" data-i18n="nav.work">Research</a>
+        <a href="#experience" data-i18n="nav.experience">Experience</a>
         <a href="#skills" data-i18n="nav.skills">Skills</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
         <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">中文</button>
@@ -328,36 +344,36 @@
     <section class="hero wrap" data-component="hero">
       <div class="status reveal">
         <span class="dot"></span>
-        <span data-i18n="hero.status">Open to multimodal AI research collaboration &amp; RA roles</span>
+        <span data-i18n="hero.status">Seeking 2027 PhD opportunities in embodied AI</span>
       </div>
       <h1 class="name reveal">Da Wei</h1>
-      <p class="hero-title reveal" data-i18n="hero.title">Multimodal AI research, grounded in systems.</p>
-      <p class="hero-sub reveal" data-i18n="hero.sub">UW Informatics undergraduate and MILab research assistant working on HA-VLN 3.0, multimodal speculative decoding, and AI agent systems.</p>
+      <p class="hero-title reveal" data-i18n="hero.title">Embodied world models for vision-and-language navigation.</p>
+      <p class="hero-sub reveal" data-i18n="hero.sub">I am interested in world models and multimodal reasoning that help navigation agents anticipate future states and make better decisions.</p>
       <div class="hero-cta reveal">
         <a class="btn btn-primary" href="#work" data-i18n="hero.cta1">Explore research</a>
         <a class="btn btn-ghost" href="#experience" data-i18n="hero.cta2">View experience</a>
       </div>
       <div class="hero-strip reveal" aria-label="Focus areas">
-        <span class="chip">Multimodal AI</span>
-        <span class="chip">Embodied AI</span>
-        <span class="chip">HA-VLN 3.0</span>
-        <span class="chip">Speculative Decoding</span>
-        <span class="chip">AI Systems</span>
+        <span class="chip">Embodied World Models</span>
+        <span class="chip">Vision-Language Navigation</span>
+        <span class="chip">Human-Aware VLN</span>
+        <span class="chip">Multimodal Reasoning</span>
+        <span class="chip">Efficient Inference</span>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section class="wrap" id="about" data-component="section">
       <span class="sec-label" data-i18n="about.label">About</span>
-      <h2 class="sec-head" data-i18n="about.heading">Research first, engineering underneath.</h2>
+      <h2 class="sec-head" data-i18n="about.heading">I work on prediction for embodied action.</h2>
       <div class="about-grid">
         <div>
-          <p data-i18n="about.p1">I'm an Informatics undergraduate at the University of Washington (Seattle), expected to graduate in 2027. At the Multimodal Intelligence Lab (MILab), I work on HA-VLN 3.0 (Human-Aware VLN), motion-data generation, and multimodal speculative decoding.</p>
-          <p data-i18n="about.p2">I also lead production engineering for a Chinese-English-Vietnamese corporate portal and a cross-border ERP system used across China and Vietnam, while contributing to Wordplay and building an education media channel.</p>
+          <p data-i18n="about.p1">I'm an Informatics undergraduate at the University of Washington (Seattle), expected to graduate in 2027. At the Multimodal Intelligence Lab (MILab), I work on human-aware vision-language navigation and efficient multimodal inference. My broader interest is how predictive world models and multimodal reasoning can improve navigation.</p>
+          <p data-i18n="about.p2">In HA-VLN 3.0, I prepare 3D human-motion data and evaluate navigation models. In Vision Speculative Decoding, I study how visual compression changes draft-target behavior. MATH-LWM-AGENT asks a related question in tool use: can prediction errors improve the next decision?</p>
         </div>
         <div class="edu-tile" data-component="card">
           <h3 data-i18n="about.eduTitle">Education</h3>
-          <p>University of Washington · Informatics · GPA 3.8/4.0</p>
+          <p>University of Washington · Informatics · GPA 3.74/4.0</p>
           <p style="margin-top:6px;color:var(--faint);font-size:.85rem">Seattle, WA</p>
           <div class="row">
             <span data-i18n="about.eduExpected">Expected graduation</span>
@@ -370,81 +386,170 @@
     <!-- RESEARCH FOCUS -->
     <section class="wrap" id="work" data-component="section">
       <span class="sec-label" data-i18n="focus.label">Research focus</span>
-      <h2 class="sec-head" data-i18n="focus.heading">What I'm working on.</h2>
+      <h2 class="sec-head" data-i18n="focus.heading">One question ties my work together.</h2>
       <div class="tracks">
         <article class="card track" data-component="card">
-          <span class="tag" data-i18n="focus1.tag">MILab · UW</span>
-          <h3 data-i18n="focus1.title">HA-VLN 3.0</h3>
-          <p data-i18n="focus1.desc">Human-Aware Vision-Language Navigation for embodied AI.</p>
+          <span class="tag" data-i18n="focus1.tag">Research direction</span>
+          <h3 data-i18n="focus1.title">Embodied World Models</h3>
+          <p data-i18n="focus1.desc">How can predictive world models improve reasoning and decision-making in vision-and-language navigation?</p>
           <ul>
-            <li data-i18n="focus1.i1">Batch 3D motion retargeting</li>
-            <li data-i18n="focus1.i2">VLN models &amp; navigation demos</li>
+            <li data-i18n="focus1.i1">Language-grounded state and memory</li>
+            <li data-i18n="focus1.i2">Future-state prediction for action</li>
           </ul>
         </article>
         <article class="card track" data-component="card">
           <span class="tag" data-i18n="focus2.tag">MILab · UW</span>
-          <h3 data-i18n="focus2.title">Vision Speculative Decoding</h3>
-          <p data-i18n="focus2.desc">Improving multimodal inference through visual compression and draft-target behavior.</p>
+          <h3 data-i18n="focus2.title">HA-VLN 3.0</h3>
+          <p data-i18n="focus2.desc">Human-aware navigation in dynamic environments with people and social constraints.</p>
           <ul>
-            <li data-i18n="focus2.i1">Composite loss design</li>
-            <li data-i18n="focus2.i2">Compression efficiency &amp; information loss</li>
+            <li data-i18n="focus2.i1">3D human-motion data and quality control</li>
+            <li data-i18n="focus2.i2">VLN training, evaluation, and demos</li>
           </ul>
         </article>
         <article class="card track" data-component="card">
-          <span class="tag" data-i18n="focus3.tag">Core interest</span>
-          <h3 data-i18n="focus3.title">AI Agents &amp; Systems</h3>
-          <p data-i18n="focus3.desc">Agent orchestration, LLM inference, and deployable workflow systems.</p>
+          <span class="tag" data-i18n="focus3.tag">Supporting methods</span>
+          <h3 data-i18n="focus3.title">Efficient Multimodal Inference</h3>
+          <p data-i18n="focus3.desc">Studying whether compressed visual representations preserve the information needed for later reasoning.</p>
           <ul>
-            <li data-i18n="focus3.i1">Agent orchestration</li>
-            <li data-i18n="focus3.i2">LLM inference &amp; automation</li>
+            <li data-i18n="focus3.i1">Visual compression and information loss</li>
+            <li data-i18n="focus3.i2">Draft-target behavior in speculative decoding</li>
           </ul>
         </article>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
+    <!-- RESEARCH EXPERIENCE -->
     <section class="wrap" id="experience" data-component="section">
-      <span class="sec-label" data-i18n="exp.label">Experience</span>
-      <h2 class="sec-head" data-i18n="exp.heading">Selected work.</h2>
+      <span class="sec-label" data-i18n="rex.label">Research experience</span>
+      <h2 class="sec-head" data-i18n="rex.heading">Projects, responsibilities, and results.</h2>
       <div class="timeline">
         <article class="card exp" data-component="card">
-          <div class="exp-period">Apr 2026 — Present</div>
+          <div class="exp-period">Apr 2026 - Present</div>
           <div class="exp-body">
-            <h3 data-i18n="exp1.role">Undergraduate Research Assistant</h3>
-            <p class="exp-org">Multimodal Intelligence Lab (MILab) · UW</p>
-            <p class="exp-desc" data-i18n="exp1.desc">Contribute to HA-VLN 3.0 by building a low-cost, adaptive batch 3D motion-retargeting agent with Kimodo and Virtual Community, auditing 300 human-motion samples, and training/evaluating VLN models.</p>
+            <h3 data-i18n="r1.role">Undergraduate Research Assistant</h3>
+            <p class="exp-org">Multimodal Intelligence Lab (MILab), University of Washington · PI: Zhi-Qi Cheng</p>
+            <div class="exp-project">
+              <div class="project-head"><h4 data-i18n="ha.title">HA-VLN 3.0: Human-Aware Vision-Language Navigation</h4><span data-i18n="ha.status">Ongoing · Planned 2026 submission · Expected second author</span></div>
+              <ul class="exp-list">
+                <li data-i18n="ha.b1">Built a low-cost batch 3D motion-retargeting agent with Kimodo and Virtual Community for new VLN scenes.</li>
+                <li data-i18n="ha.b2">Automated avatar retargeting and motion-data preparation to reduce manual environment setup.</li>
+                <li data-i18n="ha.b3">Audited and repaired 300 human-motion samples and standardized formats and quality-control rules.</li>
+                <li data-i18n="ha.b4">Train and evaluate VLN models, maintain reproducible logs, and record navigation demos.</li>
+              </ul>
+            </div>
+            <div class="exp-project">
+              <div class="project-head"><h4 data-i18n="vispec.title">Vision Speculative Decoding</h4><span data-i18n="vispec.status">Ongoing · Planned 2026 submission · Expected co-first author</span></div>
+              <ul class="exp-list">
+                <li data-i18n="vispec.b1">Surveyed multimodal speculative-decoding and sampling methods to identify limitations in the ViSpec baseline.</li>
+                <li data-i18n="vispec.b2">Formulated an objective linking visual-compression quality with draft-target model behavior.</li>
+                <li data-i18n="vispec.b3">Proposed autoencoder-based supervision for the visual adapter to measure and reduce information loss.</li>
+              </ul>
+            </div>
           </div>
         </article>
         <article class="card exp" data-component="card">
-          <div class="exp-period">Jan 2026 — Present</div>
+          <div class="exp-period">Apr 2026 - Present</div>
           <div class="exp-body">
-            <h3 data-i18n="exp2.role">Project Maintainer</h3>
-            <p class="exp-org">Wordplay · with Prof. Amy J. Ko</p>
-            <p class="exp-desc" data-i18n="exp2.desc">Contribute to an open-source educational programming language and IDE, focusing on accessibility, multilingual interactive typography, learner experience, and maintainable project work.</p>
+            <h3 data-i18n="r2.role">Undergraduate Research Collaborator</h3>
+            <p class="exp-org">Institute of Automation, Chinese Academy of Sciences · Advisor: Ning Yang</p>
+            <div class="exp-project">
+              <div class="project-head"><h4 data-i18n="math.title">MATH-LWM-AGENT: Efficient Mathematical Tool Agent</h4><span data-i18n="math.status">First author · Submitted to AAAI 2027</span></div>
+              <ul class="exp-list">
+                <li data-i18n="math.b1">Conceived and led a training-free mathematical agent that predicts tool outcomes before execution.</li>
+                <li data-i18n="math.b2">Designed a residual controller that turns prediction-execution mismatch into state for subsequent reasoning.</li>
+                <li data-i18n="math.b3">Implemented the runtime and integrated Python, SymPy, and verification tools.</li>
+                <li data-i18n="math.b4">Led experiment design, ablations, cost accounting, evidence audits, and manuscript preparation.</li>
+                <li data-i18n="math.b5">With thinking disabled, improved HMMT by 52.13 percentage points.</li>
+                <li data-i18n="math.b6">Improved IMO-AnswerBench by 35.85 percentage points and IMO-ProofBench by 1.22/7.</li>
+                <li data-i18n="math.b7">Residual control reduced model calls per correct by 9.41% and joint inference cost by 10.18%.</li>
+              </ul>
+              <a class="exp-link" href="https://github.com/wd041216-bit/MATH-LWM-AGENT" target="_blank" rel="noopener" data-i18n="link.math">MATH-LWM-AGENT on GitHub ↗</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- OPEN SOURCE & LEADERSHIP -->
+    <section class="wrap" id="leadership" data-component="section">
+      <span class="sec-label" data-i18n="lead.label">Open source &amp; leadership</span>
+      <h2 class="sec-head" data-i18n="lead.heading">Work beyond the research lab.</h2>
+      <div class="timeline">
+        <article class="card exp" data-component="card">
+          <div class="exp-period">Jan 2026 - Present</div>
+          <div class="exp-body">
+            <h3 data-i18n="wordplay.role">Open-Source Project Maintainer</h3>
+            <p class="exp-org">Wordplay · with Prof. Amy J. Ko · Seattle, WA</p>
+            <ul class="exp-list">
+              <li data-i18n="wordplay.b1">Contribute code and maintain an open-source educational programming language and IDE.</li>
+              <li data-i18n="wordplay.b2">Review accessibility and multilingual typography issues in learner-facing interactions.</li>
+              <li data-i18n="wordplay.b3">Propose product and usability improvements for the editor and learning workflow.</li>
+              <li data-i18n="wordplay.b4">Translate findings into scoped implementation tasks and maintainable code changes.</li>
+            </ul>
+            <a class="exp-link" href="https://github.com/wd041216-bit/wordplay" target="_blank" rel="noopener" data-i18n="link.wordplay">Wordplay on GitHub ↗</a>
           </div>
         </article>
         <article class="card exp" data-component="card">
-          <div class="exp-period">Oct 2025 — Present</div>
+          <div class="exp-period">Jan 2026 - Present</div>
           <div class="exp-body">
-            <h3 data-i18n="exp3.role">Project Lead</h3>
-            <p class="exp-org">Dongguan Yucheng New Material · Portal &amp; ERP</p>
-            <p class="exp-desc" data-i18n="exp3.desc">Lead a Chinese-English-Vietnamese corporate portal and cross-border ERP for hundreds of users, connecting China export operations with a Vietnam factory and tracing production, inventory, quality, logistics, and delivery.</p>
+            <h3 data-i18n="media.role">Founder &amp; Content Creator</h3>
+            <p class="exp-org">“Xiao Wang Xuezhang” Education Media Channel · China / Online</p>
+            <ul class="exp-list">
+              <li data-i18n="media.b1">Founded a social-media channel focused on undergraduate applications and international-student life.</li>
+              <li data-i18n="media.b2">Grew the WeChat Channels audience to approximately 5,000 followers.</li>
+              <li data-i18n="media.b3">Explain complex application and university-life topics for a broad student audience.</li>
+              <li data-i18n="media.b4">Refine topic selection and content structure using audience feedback.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- INDUSTRY EXPERIENCE -->
+    <section class="wrap" id="industry" data-component="section">
+      <span class="sec-label" data-i18n="ind.label">Industry experience</span>
+      <h2 class="sec-head" data-i18n="ind.heading">Systems built for real users.</h2>
+      <div class="timeline">
+        <article class="card exp" data-component="card">
+          <div class="exp-period">Jan - Mar 2026</div>
+          <div class="exp-body">
+            <h3 data-i18n="apob.role">SEO Intern</h3>
+            <p class="exp-org">APOB AI Shanghai · Shanghai, China</p>
+            <ul class="exp-list">
+              <li data-i18n="apob.b1">Applied keyword research, search intent, on-page SEO, and information-architecture principles.</li>
+              <li data-i18n="apob.b2">Authored multiple SEO-focused product landing pages and long-form blog articles.</li>
+              <li data-i18n="apob.b3">Designed a trending-keyword scoring algorithm from those SEO criteria.</li>
+              <li data-i18n="apob.b4">Built a specialized AI agent to generate landing pages and blog content.</li>
+              <li data-i18n="apob.b5">Automated ongoing updates to existing landing pages and blog posts.</li>
+              <li data-i18n="apob.b6">Cut landing-page production from two days to half a day and blog production from half a day to two hours.</li>
+              <li data-i18n="apob.b7">Helped organic traffic grow 10% within seven days.</li>
+            </ul>
           </div>
         </article>
         <article class="card exp" data-component="card">
-          <div class="exp-period">Jan — Mar 2026</div>
+          <div class="exp-period">Oct 2025 - Present</div>
           <div class="exp-body">
-            <h3 data-i18n="exp4.role">SEO Intern</h3>
-            <p class="exp-org">Shanghai APOBAI</p>
-            <p class="exp-desc" data-i18n="exp4.desc">Built AI-assisted SEO content and topic-discovery workflows; cut landing-page production time by 75%, blog production by about 50%, and contributed to 10% organic-traffic growth within 7 days.</p>
-          </div>
-        </article>
-        <article class="card exp" data-component="card">
-          <div class="exp-period">Jan 2026 — Present</div>
-          <div class="exp-body">
-            <h3 data-i18n="exp5.role">Founder &amp; Content Creator</h3>
-            <p class="exp-org">Xiao Wang Xuezhang · Education Media Channel</p>
-            <p class="exp-desc" data-i18n="exp5.desc">Founded and operate an education channel on university applications and international-student life; grew the WeChat Channels account to about 5,000 followers.</p>
+            <h3 data-i18n="yc.role">Project Lead</h3>
+            <p class="exp-org">Dongguan Yucheng New Material Co., Ltd. · Dongguan / Vietnam</p>
+            <div class="exp-project">
+              <div class="project-head"><h4 data-i18n="web.title">Multilingual Corporate Website</h4><span>yuchengmaterial.com/en</span></div>
+              <ul class="exp-list">
+                <li data-i18n="web.b1">Built and maintain a Chinese-English-Vietnamese website for cross-regional branding.</li>
+                <li data-i18n="web.b2">Centralized PU, TPU, microfiber, sustainability, production-capacity, and inquiry information.</li>
+                <li data-i18n="web.b3">Designed page hierarchy, information architecture, and navigation for faster product discovery.</li>
+                <li data-i18n="web.b4">Maintain the portal as a global business entry point for overseas clients.</li>
+              </ul>
+              <a class="exp-link" href="https://yuchengmaterial.com/en" target="_blank" rel="noopener" data-i18n="link.website">Visit website ↗</a>
+            </div>
+            <div class="exp-project">
+              <div class="project-head"><h4 data-i18n="erp.title">ERP Management Prototype</h4><span data-i18n="erp.status">China operations · 100+ users</span></div>
+              <ul class="exp-list">
+                <li data-i18n="erp.b1">Built and iteratively deployed an ERP prototype used by 100+ employees across the company's China operations.</li>
+                <li data-i18n="erp.b2">Digitized the order-to-reconciliation flow across sales, procurement, quality inspection, warehouse dispatch, and finance.</li>
+                <li data-i18n="erp.b3">Converted fragmented practices into standardized system workflows and SOPs with clear ownership and handoffs.</li>
+                <li data-i18n="erp.b4">Used live operations to uncover management gaps and refine controls, improving management visibility and consistency.</li>
+              </ul>
+            </div>
           </div>
         </article>
       </div>
@@ -456,34 +561,45 @@
       <h2 class="sec-head" data-i18n="skills.heading">What I work with.</h2>
       <div class="skills">
         <div class="card skill" data-component="card">
-          <h3 data-i18n="sk1.title">AI &amp; Systems</h3>
-          <div class="tags"><span>Multimodal AI</span><span>Embodied AI</span><span>LLM Agents</span><span>Speculative Decoding</span><span>AI Systems</span></div>
+          <h3 data-i18n="sk1.title">Research Areas</h3>
+          <div class="tags"><span>Embodied World Models</span><span>Multimodal Reasoning</span><span>Vision-Language Navigation</span></div>
         </div>
         <div class="card skill" data-component="card">
-          <h3 data-i18n="sk2.title">Engineering</h3>
-          <div class="tags"><span>Python</span><span>Java</span><span>Web Development</span><span>ERP Workflows</span><span>SEO Automation &amp; Data Modeling</span></div>
+          <h3 data-i18n="sk2.title">Embodied Data</h3>
+          <div class="tags"><span>3D Motion Retargeting</span><span>Human-Motion Data</span><span>Data Quality</span><span>Navigation Evaluation</span></div>
         </div>
         <div class="card skill" data-component="card">
-          <h3 data-i18n="sk3.title">Data &amp; Analysis</h3>
-          <div class="tags"><span>Motion Data</span><span>VLN Evaluation</span><span>Model Experiments</span><span>Data Quality</span><span>Sampling Methods</span><span>Information Loss</span></div>
+          <h3 data-i18n="sk3.title">Model Analysis</h3>
+          <div class="tags"><span>Visual Compression</span><span>Draft-Target Analysis</span><span>Ablation Studies</span><span>Cost Accounting</span></div>
         </div>
         <div class="card skill" data-component="card">
-          <h3 data-i18n="sk4.title">Math &amp; Reasoning</h3>
-          <div class="tags"><span>Calculus</span><span>Geometry &amp; Vectors</span><span>Linear Algebra</span><span>Probability &amp; Statistics</span></div>
+          <h3 data-i18n="sk4.title">Programming &amp; Tools</h3>
+          <div class="tags"><span>Python</span><span>Java</span><span>R</span><span>LaTeX</span></div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section class="wrap contact" id="contact" data-component="section">
-      <span class="sec-label" data-i18n="contact.label">Contact</span>
-      <h2 class="sec-head" data-i18n="contact.heading">Let's talk multimodal AI.</h2>
-      <div class="contact-panel" data-component="card">
-        <h3 data-i18n="contact.h">Say hello.</h3>
-        <p data-i18n="contact.p">Open to multimodal AI research collaboration, RA roles, and AI agent or systems engineering opportunities.</p>
-        <div class="contact-links">
-          <a class="btn btn-primary" href="mailto:wd041216@uw.edu" data-i18n="contact.c1">Email me</a>
-          <a class="btn btn-ghost" href="https://github.com/wd041216-bit" target="_blank" rel="noopener" data-i18n="contact.c2">GitHub</a>
+    <!-- CLOSING -->
+    <section class="wrap closing" id="additional" data-component="section">
+      <div class="closing-grid">
+        <div class="card closing-card" data-component="card">
+          <span class="sec-label" data-i18n="additional.label">Additional</span>
+          <h2 data-i18n="additional.heading">Outside the lab.</h2>
+          <div class="interest-list" aria-label="Additional interests">
+            <span class="chip" data-i18n="additional.scuba">Scuba diving</span>
+            <span class="chip" data-i18n="additional.surfing">Surfing</span>
+            <span class="chip" data-i18n="additional.skiing">Skiing</span>
+            <span class="chip" data-i18n="additional.license">Valid driver's license</span>
+          </div>
+        </div>
+        <div class="card closing-card contact-card" id="contact" data-component="card">
+          <span class="sec-label" data-i18n="contact.label">Contact</span>
+          <h2 data-i18n="contact.heading">Let's talk research.</h2>
+          <p data-i18n="contact.p">I am preparing for 2027 PhD applications and welcome research conversations about embodied world models, multimodal reasoning, and vision-language navigation.</p>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:wd041216@uw.edu" data-i18n="contact.c1">Email me</a>
+            <a class="btn btn-ghost" href="https://github.com/wd041216-bit" target="_blank" rel="noopener" data-i18n="contact.c2">GitHub</a>
+          </div>
         </div>
       </div>
     </section>
@@ -496,68 +612,160 @@
 <script>
   const I18N = {
     en: {
-      "nav.about": "About", "nav.work": "Research", "nav.skills": "Skills", "nav.contact": "Contact",
-      "hero.status": "Open to multimodal AI research collaboration & RA roles",
-      "hero.title": "Multimodal AI research, grounded in systems.",
-      "hero.sub": "UW Informatics undergraduate and MILab research assistant working on HA-VLN 3.0, multimodal speculative decoding, and AI agent systems.",
+      "nav.about": "About", "nav.work": "Research", "nav.experience": "Experience", "nav.skills": "Skills", "nav.contact": "Contact",
+      "hero.status": "Seeking 2027 PhD opportunities in embodied AI",
+      "hero.title": "Embodied world models for vision-and-language navigation.",
+      "hero.sub": "I am interested in world models and multimodal reasoning that help navigation agents anticipate future states and make better decisions.",
       "hero.cta1": "Explore research", "hero.cta2": "View experience",
-      "about.label": "About", "about.heading": "Research first, engineering underneath.",
-      "about.p1": "I'm an Informatics undergraduate at the University of Washington (Seattle), expected to graduate in 2027. At the Multimodal Intelligence Lab (MILab), I work on HA-VLN 3.0 (Human-Aware VLN), motion-data generation, and multimodal speculative decoding.",
-      "about.p2": "I also lead production engineering for a Chinese-English-Vietnamese corporate portal and a cross-border ERP system used across China and Vietnam, while contributing to Wordplay and building an education media channel.",
+      "about.label": "About", "about.heading": "I work on prediction for embodied action.",
+      "about.p1": "I'm an Informatics undergraduate at the University of Washington (Seattle), expected to graduate in 2027. At the Multimodal Intelligence Lab (MILab), I work on human-aware vision-language navigation and efficient multimodal inference. My broader interest is how predictive world models and multimodal reasoning can improve navigation.",
+      "about.p2": "In HA-VLN 3.0, I prepare 3D human-motion data and evaluate navigation models. In Vision Speculative Decoding, I study how visual compression changes draft-target behavior. MATH-LWM-AGENT asks a related question in tool use: can prediction errors improve the next decision?",
       "about.eduTitle": "Education", "about.eduExpected": "Expected graduation",
-      "focus.label": "Research focus", "focus.heading": "What I'm working on.",
-      "focus1.tag": "MILab · UW", "focus1.title": "HA-VLN 3.0",
-      "focus1.desc": "Human-Aware Vision-Language Navigation for embodied AI.",
-      "focus1.i1": "Batch 3D motion retargeting", "focus1.i2": "VLN models & navigation demos",
-      "focus2.tag": "MILab · UW", "focus2.title": "Vision Speculative Decoding",
-      "focus2.desc": "Improving multimodal inference through visual compression and draft-target behavior.",
-      "focus2.i1": "Composite loss design", "focus2.i2": "Compression efficiency & information loss",
-      "focus3.tag": "Core interest", "focus3.title": "AI Agents & Systems",
-      "focus3.desc": "Agent orchestration, LLM inference, and deployable workflow systems.",
-      "focus3.i1": "Agent orchestration", "focus3.i2": "LLM inference & automation",
-      "exp.label": "Experience", "exp.heading": "Selected work.",
-      "exp1.role": "Undergraduate Research Assistant", "exp1.desc": "Contribute to HA-VLN 3.0 by building a low-cost, adaptive batch 3D motion-retargeting agent with Kimodo and Virtual Community, auditing 300 human-motion samples, and training/evaluating VLN models.",
-      "exp2.role": "Project Maintainer", "exp2.desc": "Contribute to an open-source educational programming language and IDE, focusing on accessibility, multilingual interactive typography, learner experience, and maintainable project work.",
-      "exp3.role": "Project Lead", "exp3.desc": "Lead a Chinese-English-Vietnamese corporate portal and cross-border ERP for hundreds of users, connecting China export operations with a Vietnam factory and tracing production, inventory, quality, logistics, and delivery.",
-      "exp4.role": "SEO Intern", "exp4.desc": "Built AI-assisted SEO content and topic-discovery workflows; cut landing-page production time by 75%, blog production by about 50%, and contributed to 10% organic-traffic growth within 7 days.",
-      "exp5.role": "Founder & Content Creator", "exp5.desc": "Founded and operate an education channel on university applications and international-student life; grew the WeChat Channels account to about 5,000 followers.",
+      "focus.label": "Research focus", "focus.heading": "One question ties my work together.",
+      "focus1.tag": "Research direction", "focus1.title": "Embodied World Models",
+      "focus1.desc": "How can predictive world models improve reasoning and decision-making in vision-and-language navigation?",
+      "focus1.i1": "Language-grounded state and memory", "focus1.i2": "Future-state prediction for action",
+      "focus2.tag": "MILab · UW", "focus2.title": "HA-VLN 3.0",
+      "focus2.desc": "Human-aware navigation in dynamic environments with people and social constraints.",
+      "focus2.i1": "3D human-motion data and quality control", "focus2.i2": "VLN training, evaluation, and demos",
+      "focus3.tag": "Supporting methods", "focus3.title": "Efficient Multimodal Inference",
+      "focus3.desc": "Studying whether compressed visual representations preserve the information needed for later reasoning.",
+      "focus3.i1": "Visual compression and information loss", "focus3.i2": "Draft-target behavior in speculative decoding",
+      "rex.label": "Research experience", "rex.heading": "Projects, responsibilities, and results.",
+      "r1.role": "Undergraduate Research Assistant", "r2.role": "Undergraduate Research Collaborator",
+      "ha.title": "HA-VLN 3.0: Human-Aware Vision-Language Navigation", "ha.status": "Ongoing · Planned 2026 submission · Expected second author",
+      "ha.b1": "Built a low-cost batch 3D motion-retargeting agent with Kimodo and Virtual Community for new VLN scenes.",
+      "ha.b2": "Automated avatar retargeting and motion-data preparation to reduce manual environment setup.",
+      "ha.b3": "Audited and repaired 300 human-motion samples and standardized formats and quality-control rules.",
+      "ha.b4": "Train and evaluate VLN models, maintain reproducible logs, and record navigation demos.",
+      "vispec.title": "Vision Speculative Decoding", "vispec.status": "Ongoing · Planned 2026 submission · Expected co-first author",
+      "vispec.b1": "Surveyed multimodal speculative-decoding and sampling methods to identify limitations in the ViSpec baseline.",
+      "vispec.b2": "Formulated an objective linking visual-compression quality with draft-target model behavior.",
+      "vispec.b3": "Proposed autoencoder-based supervision for the visual adapter to measure and reduce information loss.",
+      "math.title": "MATH-LWM-AGENT: Efficient Mathematical Tool Agent", "math.status": "First author · Submitted to AAAI 2027",
+      "math.b1": "Conceived and led a training-free mathematical agent that predicts tool outcomes before execution.",
+      "math.b2": "Designed a residual controller that turns prediction-execution mismatch into state for subsequent reasoning.",
+      "math.b3": "Implemented the runtime and integrated Python, SymPy, and verification tools.",
+      "math.b4": "Led experiment design, ablations, cost accounting, evidence audits, and manuscript preparation.",
+      "math.b5": "With thinking disabled, improved HMMT by 52.13 percentage points.",
+      "math.b6": "Improved IMO-AnswerBench by 35.85 percentage points and IMO-ProofBench by 1.22/7.",
+      "math.b7": "Residual control reduced model calls per correct by 9.41% and joint inference cost by 10.18%.",
+      "link.math": "MATH-LWM-AGENT on GitHub ↗", "link.wordplay": "Wordplay on GitHub ↗", "link.website": "Visit website ↗",
+      "lead.label": "Open source & leadership", "lead.heading": "Work beyond the research lab.",
+      "wordplay.role": "Open-Source Project Maintainer",
+      "wordplay.b1": "Contribute code and maintain an open-source educational programming language and IDE.",
+      "wordplay.b2": "Review accessibility and multilingual typography issues in learner-facing interactions.",
+      "wordplay.b3": "Propose product and usability improvements for the editor and learning workflow.",
+      "wordplay.b4": "Translate findings into scoped implementation tasks and maintainable code changes.",
+      "media.role": "Founder & Content Creator",
+      "media.b1": "Founded a social-media channel focused on undergraduate applications and international-student life.",
+      "media.b2": "Grew the WeChat Channels audience to approximately 5,000 followers.",
+      "media.b3": "Explain complex application and university-life topics for a broad student audience.",
+      "media.b4": "Refine topic selection and content structure using audience feedback.",
+      "ind.label": "Industry experience", "ind.heading": "Systems built for real users.",
+      "apob.role": "SEO Intern",
+      "apob.b1": "Applied keyword research, search intent, on-page SEO, and information-architecture principles.",
+      "apob.b2": "Authored multiple SEO-focused product landing pages and long-form blog articles.",
+      "apob.b3": "Designed a trending-keyword scoring algorithm from those SEO criteria.",
+      "apob.b4": "Built a specialized AI agent to generate landing pages and blog content.",
+      "apob.b5": "Automated ongoing updates to existing landing pages and blog posts.",
+      "apob.b6": "Cut landing-page production from two days to half a day and blog production from half a day to two hours.",
+      "apob.b7": "Helped organic traffic grow 10% within seven days.",
+      "yc.role": "Project Lead", "web.title": "Multilingual Corporate Website",
+      "web.b1": "Built and maintain a Chinese-English-Vietnamese website for cross-regional branding.",
+      "web.b2": "Centralized PU, TPU, microfiber, sustainability, production-capacity, and inquiry information.",
+      "web.b3": "Designed page hierarchy, information architecture, and navigation for faster product discovery.",
+      "web.b4": "Maintain the portal as a global business entry point for overseas clients.",
+      "erp.title": "ERP Management Prototype", "erp.status": "China operations · 100+ users",
+      "erp.b1": "Built and iteratively deployed an ERP prototype used by 100+ employees across the company's China operations.",
+      "erp.b2": "Digitized the order-to-reconciliation flow across sales, procurement, quality inspection, warehouse dispatch, and finance.",
+      "erp.b3": "Converted fragmented practices into standardized system workflows and SOPs with clear ownership and handoffs.",
+      "erp.b4": "Used live operations to uncover management gaps and refine controls, improving management visibility and consistency.",
       "skills.label": "Skills", "skills.heading": "What I work with.",
-      "sk1.title": "AI & Systems", "sk2.title": "Engineering", "sk3.title": "Data & Analysis", "sk4.title": "Math & Reasoning",
-      "contact.label": "Contact", "contact.heading": "Let's talk multimodal AI.", "contact.h": "Say hello.",
-      "contact.p": "Open to multimodal AI research collaboration, RA roles, and AI agent or systems engineering opportunities.",
+      "sk1.title": "Research Areas", "sk2.title": "Embodied Data", "sk3.title": "Model Analysis", "sk4.title": "Programming & Tools",
+      "additional.label": "Additional", "additional.heading": "Outside the lab.",
+      "additional.scuba": "Scuba diving", "additional.surfing": "Surfing", "additional.skiing": "Skiing", "additional.license": "Valid driver's license",
+      "contact.label": "Contact", "contact.heading": "Let's talk research.",
+      "contact.p": "I am preparing for 2027 PhD applications and welcome research conversations about embodied world models, multimodal reasoning, and vision-language navigation.",
       "contact.c1": "Email me", "contact.c2": "GitHub",
       "footer.note": "© 2026 Da Wei · Seattle, WA"
     },
     zh: {
-      "nav.about": "关于", "nav.work": "研究", "nav.skills": "能力", "nav.contact": "联系",
-      "hero.status": "开放多模态 AI 科研合作与 RA 机会",
-      "hero.title": "以系统工程为底的多模态 AI 研究。",
-      "hero.sub": "华盛顿大学 Informatics 本科生、MILab 本科科研助理，研究 HA-VLN 3.0、多模态投机解码与 AI Agent 系统。",
+      "nav.about": "关于", "nav.work": "研究", "nav.experience": "经历", "nav.skills": "能力", "nav.contact": "联系",
+      "hero.status": "正在准备 2027 年具身 AI 博士申请",
+      "hero.title": "面向视觉语言导航的具身世界模型。",
+      "hero.sub": "我希望研究世界模型与多模态推理如何帮助导航智能体预测未来状态并做出更好的决策。",
       "hero.cta1": "查看研究方向", "hero.cta2": "查看经历",
-      "about.label": "关于我", "about.heading": "研究为主，工程为底。",
-      "about.p1": "我是华盛顿大学（西雅图）Informatics 本科生，预计 2027 年毕业。在多模态智能实验室（MILab），我参与 HA-VLN 3.0（人类感知视觉语言导航）、动作数据生成与多模态投机解码研究。",
-      "about.p2": "我还负责中英越三语企业门户与跨境 ERP 的工程建设，服务中国与越南的生产及外贸协作，同时参与 Wordplay 开源项目并运营教育自媒体账号。",
+      "about.label": "关于我", "about.heading": "我关注预测如何服务具身行动。",
+      "about.p1": "我是华盛顿大学（西雅图）Informatics 本科生，预计 2027 年毕业。在多模态智能实验室（MILab），我研究人类感知视觉语言导航与高效多模态推理。更广泛地说，我关心预测式世界模型与多模态推理如何改善导航。",
+      "about.p2": "在 HA-VLN 3.0 中，我负责人类 3D 动作数据准备并评测导航模型；在视觉投机解码项目中，我研究视觉压缩如何影响草稿模型与目标模型的行为。MATH-LWM-AGENT 在工具调用场景中追问了一个相关问题：预测误差能否改善下一步决策？",
       "about.eduTitle": "教育", "about.eduExpected": "预计毕业",
-      "focus.label": "研究方向", "focus.heading": "我目前在做什么。",
-      "focus1.tag": "MILab · 华盛顿大学", "focus1.title": "HA-VLN 3.0",
-      "focus1.desc": "面向具身智能的人类感知视觉语言导航。",
-      "focus1.i1": "批量 3D 动作重定向", "focus1.i2": "VLN 模型与导航演示",
-      "focus2.tag": "MILab · 华盛顿大学", "focus2.title": "视觉投机解码",
-      "focus2.desc": "通过视觉压缩与草稿—目标模型行为优化多模态推理。",
-      "focus2.i1": "复合损失设计", "focus2.i2": "压缩效率与信息损失",
-      "focus3.tag": "核心兴趣", "focus3.title": "AI Agent 与系统",
-      "focus3.desc": "Agent 编排、LLM 推理与可落地的工作流系统。",
-      "focus3.i1": "Agent 编排", "focus3.i2": "LLM 推理与自动化",
-      "exp.label": "经历", "exp.heading": "精选工作。",
-      "exp1.role": "本科科研助理", "exp1.desc": "参与 HA-VLN 3.0：使用 Kimodo 与 Virtual Community 构建低成本、自适应的批量 3D 动作重定向 Agent，审核 300 个人体动作样本，并训练测试 VLN 模型。",
-      "exp2.role": "项目维护者", "exp2.desc": "参与开源教育编程语言与 IDE 的开发维护，关注无障碍、多语言交互式排版、学习体验和可维护的项目实现。",
-      "exp3.role": "官网与 ERP 项目负责人", "exp3.desc": "负责中英越三语企业门户与跨境 ERP，服务数百名用户，连接中国外贸团队与越南工厂，并追踪生产、库存、质检、物流和交付。",
-      "exp4.role": "SEO 实习生", "exp4.desc": "搭建 AI 辅助的 SEO 内容与选题工作流；落地页生产周期缩短 75%，博客约缩短 50%，并在 7 天内协助自然流量增长 10%。",
-      "exp5.role": "创始人与内容创作者", "exp5.desc": "创办并运营本科申请与留学生活教育账号，持续策划发布内容；微信视频号粉丝增长至约 5,000 名。",
+      "focus.label": "研究方向", "focus.heading": "一个问题串起了我目前的研究。",
+      "focus1.tag": "研究方向", "focus1.title": "具身世界模型",
+      "focus1.desc": "预测式世界模型如何改善视觉语言导航中的推理与决策？",
+      "focus1.i1": "语言对齐的状态与记忆", "focus1.i2": "服务行动的未来状态预测",
+      "focus2.tag": "MILab · 华盛顿大学", "focus2.title": "HA-VLN 3.0",
+      "focus2.desc": "在包含人类活动与社会约束的动态环境中进行导航。",
+      "focus2.i1": "3D 人体动作数据与质量控制", "focus2.i2": "VLN 训练、评测与导航演示",
+      "focus3.tag": "支撑方法", "focus3.title": "高效多模态推理",
+      "focus3.desc": "研究压缩后的视觉表示能否保留后续推理所需的信息。",
+      "focus3.i1": "视觉压缩与信息损失", "focus3.i2": "投机解码中的草稿—目标模型行为",
+      "rex.label": "科研经历", "rex.heading": "项目、职责与结果。",
+      "r1.role": "本科科研助理", "r2.role": "本科研究合作者",
+      "ha.title": "HA-VLN 3.0：人类感知视觉语言导航", "ha.status": "进行中 · 计划 2026 年投稿 · 预计第二作者",
+      "ha.b1": "使用 Kimodo 与 Virtual Community 为新 VLN 场景构建低成本批量 3D 动作重定向 Agent。",
+      "ha.b2": "自动化角色动作重定向和动作数据准备，减少人工搭建环境的工作量。",
+      "ha.b3": "审核并修复 300 个人体动作样本，统一数据格式与质量控制规则。",
+      "ha.b4": "训练和评测 VLN 模型，维护可复现实验日志并录制导航演示。",
+      "vispec.title": "视觉投机解码", "vispec.status": "进行中 · 计划 2026 年投稿 · 预计共同第一作者",
+      "vispec.b1": "调研多模态投机解码与采样方法，定位 ViSpec 基线的局限。",
+      "vispec.b2": "提出连接视觉压缩质量与草稿—目标模型行为的研究目标。",
+      "vispec.b3": "为视觉适配器提出自编码器监督，用于测量并减少信息损失。",
+      "math.title": "MATH-LWM-AGENT：高效数学工具 Agent", "math.status": "第一作者 · 已投稿 AAAI 2027",
+      "math.b1": "构思并主导无需训练的数学 Agent，在工具执行前预测结果。",
+      "math.b2": "设计残差控制器，将预测—执行失配写入后续推理状态。",
+      "math.b3": "实现运行时并集成 Python、SymPy 和验证工具。",
+      "math.b4": "负责实验设计、消融、成本核算、证据审计与论文准备。",
+      "math.b5": "关闭 thinking 后，HMMT 准确率提高 52.13 个百分点。",
+      "math.b6": "IMO-AnswerBench 提高 35.85 个百分点，IMO-ProofBench 提高 1.22/7。",
+      "math.b7": "残差控制使每道正确题的模型调用量减少 9.41%，联合推理成本减少 10.18%。",
+      "link.math": "在 GitHub 查看 MATH-LWM-AGENT ↗", "link.wordplay": "在 GitHub 查看 Wordplay ↗", "link.website": "访问网站 ↗",
+      "lead.label": "开源与领导力", "lead.heading": "科研之外的长期工作。",
+      "wordplay.role": "开源项目维护者",
+      "wordplay.b1": "参与 Amy J. Ko 教授的开源教育编程语言与 IDE 的开发维护。",
+      "wordplay.b2": "检查面向学习者的无障碍与多语言排版问题。",
+      "wordplay.b3": "为编辑器和学习流程提出产品与可用性改进。",
+      "wordplay.b4": "将发现转化为范围明确、便于维护的实现任务。",
+      "media.role": "创始人与内容创作者",
+      "media.b1": "创办聚焦本科申请与留学生活的教育自媒体账号。",
+      "media.b2": "将微信视频号受众增长至约 5,000 人。",
+      "media.b3": "面向学生受众解释复杂的申请与大学生活话题。",
+      "media.b4": "根据受众反馈持续调整选题和内容结构。",
+      "ind.label": "行业经历", "ind.heading": "为真实用户交付的系统。",
+      "apob.role": "SEO 实习生",
+      "apob.b1": "应用关键词研究、搜索意图、站内 SEO 和信息架构原则。",
+      "apob.b2": "撰写多篇面向 SEO 的产品落地页与长篇博客文章。",
+      "apob.b3": "基于这些 SEO 标准设计热点关键词评分算法。",
+      "apob.b4": "构建专门用于生成落地页与博客内容的 AI Agent。",
+      "apob.b5": "自动化持续更新已有落地页和博客文章。",
+      "apob.b6": "将落地页制作周期从两天缩短至半天，将博客制作从半天缩短至两小时。",
+      "apob.b7": "协助自然流量在七天内增长 10%。",
+      "yc.role": "项目负责人", "web.title": "多语言企业官网",
+      "web.b1": "建设并维护中英越三语网站，服务跨区域品牌传播。",
+      "web.b2": "集中呈现 PU、TPU、超纤、可持续性、产能与询盘信息。",
+      "web.b3": "设计页面层级、信息架构与导航，帮助客户更快找到产品。",
+      "web.b4": "持续维护面向海外客户的全球业务入口。",
+      "erp.title": "ERP 管理原型", "erp.status": "中国区业务 · 100+ 用户",
+      "erp.b1": "建设并迭代部署 ERP 原型，服务公司中国区 100 多名员工。",
+      "erp.b2": "数字化销售、采购、质检、仓库发货与财务对账流程。",
+      "erp.b3": "将分散做法转化为职责与交接清晰的标准系统工作流和 SOP。",
+      "erp.b4": "通过实际运营发现管理缺口并调整控制点，提高管理可见性与一致性。",
       "skills.label": "能力", "skills.heading": "我用什么工作。",
-      "sk1.title": "AI 与系统", "sk2.title": "工程", "sk3.title": "数据与分析", "sk4.title": "数学与推理",
-      "contact.label": "联系", "contact.heading": "一起聊聊多模态 AI。", "contact.h": "打个招呼。",
-      "contact.p": "开放多模态 AI 科研合作、RA 机会，以及 AI Agent 与系统工程方向的交流。",
+      "sk1.title": "研究方向", "sk2.title": "具身数据", "sk3.title": "模型分析", "sk4.title": "编程与工具",
+      "additional.label": "其他", "additional.heading": "实验室之外。",
+      "additional.scuba": "水肺潜水", "additional.surfing": "冲浪", "additional.skiing": "滑雪", "additional.license": "持有效驾驶执照",
+      "contact.label": "联系", "contact.heading": "聊聊研究。",
+      "contact.p": "我正在准备 2027 年博士申请，也欢迎围绕具身世界模型、多模态推理与视觉语言导航进行科研交流。",
       "contact.c1": "给我写信", "contact.c2": "GitHub",
       "footer.note": "© 2026 Da Wei · Seattle, WA"
     }
