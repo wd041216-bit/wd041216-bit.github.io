@@ -1,11 +1,5 @@
-# Da Wei - GitHub Pages CV
+# Da Wei - Personal website
 
-This repository hosts Da Wei's personal CV website through GitHub Pages.
+Personal research website, hosted on [GitHub Pages](https://wd041216-bit.github.io).
 
-Live site:
-
-https://wd041216-bit.github.io
-
-## Source
-
-The content is adapted from `Da_Wei_RA_CV.docx`.
+Content is based on [Da_Wei_English_Research_CV.pdf](Da_Wei_English_Research_CV.pdf), synchronized on September 5, 2026. The site includes English and Chinese versions and a downloadable copy of the original CV.
