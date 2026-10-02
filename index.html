@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="data:," />
 <meta name="color-scheme" content="light dark" />
-<meta name="description" content="Da Wei, Informatics undergraduate at the University of Washington. Research in embodied AI, world models, vision-language navigation, and mathematical tool agents." />
-<title>Da Wei | World Models &amp; Vision-Language Navigation</title>
+<meta name="description" content="Da Wei, University of Washington undergraduate researching embodied AI, world models, continual vision-language-action learning, and real-robot evaluation. Seeking 2027 PhD opportunities." />
+<title>Da Wei | World Models &amp; Vision-Language-Action Learning</title>
 <style>
   :root {
     --seed-bg: #f5f5f7;
@@ -135,7 +135,7 @@
   }
 
   /* ---- hero ---- */
-  .hero { padding-top: calc(var(--space) * 10); padding-bottom: calc(var(--space) * 6); text-align: center; }
+  .hero { padding-top: calc(var(--space) * 10); padding-bottom: calc(var(--space) * 4); text-align: center; }
   .status {
     display: inline-flex; align-items: center; gap: calc(var(--space) * 0.55);
     font-size: .84rem; font-weight: 500; color: var(--muted);
@@ -164,7 +164,7 @@
   .hero-title {
     font-size: calc(clamp(1.35rem, 3vw, 2.15rem) * var(--scale));
     font-weight: 500; line-height: 1.28; letter-spacing: -0.02em;
-    color: var(--fg); max-width: 760px; margin: 0 auto calc(var(--space) * 1.4);
+    color: var(--fg); max-width: 900px; margin: 0 auto calc(var(--space) * 1.4);
   }
   .hero-sub {
     color: var(--muted); font-size: calc(1.05rem * var(--scale));
@@ -197,7 +197,7 @@
   }
 
   /* ---- sections ---- */
-  section { padding: calc(var(--space) * 5.5) 0; }
+  section { padding: calc(var(--space) * 4) 0; scroll-margin-top: 100px; }
   .sec-label {
     display: inline-block; font-size: .78rem; font-weight: 650; letter-spacing: .12em;
     text-transform: uppercase; color: var(--primary);
@@ -318,9 +318,15 @@
     .contact-links .btn { justify-content: center; flex: 1; }
     .nav-links a { display: none; }
   }
+
+  .skip-link { position: fixed; top: -100px; left: 16px; z-index: 100; padding: 10px 16px; background: var(--fg); color: var(--bg); border-radius: 10px; }
+  .skip-link:focus { top: 12px; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--primary); outline-offset: 4px; }
+  @media (max-width: 640px) { .hero-title { font-size: 1.5rem; } .hero-sub { font-size: 1rem; } }
 </style>
 </head>
 <body>
+  <a class="skip-link" href="#experience">Skip to research</a>
   <div class="bg" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
@@ -349,30 +355,30 @@
         <span data-i18n="hero.status">Seeking 2027 PhD opportunities in embodied AI</span>
       </div>
       <h1 class="name reveal">Da Wei</h1>
-      <p class="hero-title reveal" data-i18n="hero.title">Undergraduate AI Researcher | World Models &amp; VLN</p>
-      <p class="hero-sub reveal" data-i18n="hero.sub">I am interested in world models and multimodal reasoning that help navigation agents anticipate future states and make better decisions.</p>
+      <p class="hero-title reveal" data-i18n="hero.title">Undergraduate AI Researcher | World Models &amp; VLA</p>
+      <p class="hero-sub reveal" data-i18n="hero.sub">I study how predictive models, continual learning, and multimodal reasoning can help robots adapt and act reliably in the physical world.</p>
       <div class="hero-cta reveal">
-        <a class="btn btn-primary" href="#work" data-i18n="hero.cta1">Explore research</a>
-        <a class="btn btn-ghost" href="#experience" data-i18n="hero.cta2">View experience</a>
+        <a class="btn btn-primary" href="#work" data-i18n="hero.cta1">Selected research</a>
+        <a class="btn btn-ghost" href="mailto:wd041216@uw.edu" data-i18n="hero.cta2">Email me</a>
         <a class="btn btn-ghost" href="Da_Wei_English_Research_CV.pdf" data-i18n="hero.cv" download>Download CV (PDF)</a>
       </div>
       <div class="hero-strip reveal" aria-label="Focus areas">
         <span class="chip">Embodied World Models</span>
         <span class="chip">Vision-Language Navigation</span>
-        <span class="chip">Human-Aware VLN</span>
+        <span class="chip">Vision-Language-Action Learning</span>
         <span class="chip">Multimodal Reasoning</span>
-        <span class="chip">Efficient Inference</span>
+        <span class="chip">Continual Robot Learning</span>
       </div>
     </section>
 
     <!-- ABOUT -->
     <section class="wrap" id="about" data-component="section">
       <span class="sec-label" data-i18n="about.label">About</span>
-      <h2 class="sec-head" data-i18n="about.heading">I work on prediction for embodied action.</h2>
+      <h2 class="sec-head" data-i18n="about.heading">Prediction, adaptation, and real-world action.</h2>
       <div class="about-grid">
         <div>
-          <p data-i18n="about.p1">I&#x27;m an Informatics undergraduate at the University of Washington, graduating in 2027. My research interests are embodied AI, world models, and vision-and-language navigation. At UW&#x27;s Multimodal Intelligence Lab, I work with Zhi-Qi Cheng on human-aware navigation and multimodal speculative decoding.</p>
-          <p data-i18n="about.p2">I also collaborate with Ning Yang at the Institute of Automation, Chinese Academy of Sciences, where I led MATH-LWM-AGENT. At NUS LinS Lab and RoboScience Lab, I work with Lin Shao on WAM RL, including robot data collection, real-robot deployment, and SFT/RL training.</p>
+          <p data-i18n="about.p1">I'm an Informatics undergraduate at the University of Washington, graduating in 2027. My research focuses on embodied AI, world models, and vision-language-action learning, with hands-on work in robot manipulation and human-aware navigation.</p>
+          <p data-i18n="about.p2">At UW’s Multimodal Intelligence Lab, I work with Zhi-Qi Cheng on human-aware navigation and efficient multimodal inference. I independently developed MATH-LWM-AGENT as its sole author. At NUS LinS Lab and RoboScience Lab, I work with Lin Shao on world-action models and continual VLA learning.</p>
         </div>
         <div class="edu-tile" data-component="card">
           <h3 data-i18n="about.eduTitle">Education</h3>
@@ -391,33 +397,33 @@
     <!-- RESEARCH FOCUS -->
     <section class="wrap" id="work" data-component="section">
       <span class="sec-label" data-i18n="focus.label">Research focus</span>
-      <h2 class="sec-head" data-i18n="focus.heading">One question ties my work together.</h2>
+      <h2 class="sec-head" data-i18n="focus.heading">Learning to predict, adapt, and act.</h2>
       <div class="tracks">
         <article class="card track" data-component="card">
-          <span class="tag" data-i18n="focus1.tag">Research direction</span>
-          <h3 data-i18n="focus1.title">Embodied World Models</h3>
-          <p data-i18n="focus1.desc">How can predictive world models improve reasoning and decision-making in vision-and-language navigation?</p>
+          <span class="tag" data-i18n="focus1.tag">World models</span>
+          <h3 data-i18n="focus1.title">Prediction for Action</h3>
+          <p data-i18n="focus1.desc">How can models of future observations and action outcomes support reliable robot behavior?</p>
           <ul>
-            <li data-i18n="focus1.i1">Language-grounded state and memory</li>
-            <li data-i18n="focus1.i2">Future-state prediction for action</li>
+            <li data-i18n="focus1.i1">World-action modeling and critic-guided generation</li>
+            <li data-i18n="focus1.i2">Real-robot data, training, deployment, and evaluation</li>
           </ul>
         </article>
         <article class="card track" data-component="card">
-          <span class="tag" data-i18n="focus2.tag">MILab · UW</span>
-          <h3 data-i18n="focus2.title">HA-VLN 3.0</h3>
-          <p data-i18n="focus2.desc">Human-aware navigation in dynamic environments with people and social constraints.</p>
+          <span class="tag" data-i18n="focus2.tag">Continual learning</span>
+          <h3 data-i18n="focus2.title">Adaptive VLA Policies</h3>
+          <p data-i18n="focus2.desc">How can vision-language-action policies learn new tasks while retaining previously learned skills?</p>
           <ul>
-            <li data-i18n="focus2.i1">3D human-motion data and quality control</li>
-            <li data-i18n="focus2.i2">VLN training, evaluation, and demos</li>
+            <li data-i18n="focus2.i1">Offline and online reinforcement learning</li>
+            <li data-i18n="focus2.i2">Adaptation and retention on real robots</li>
           </ul>
         </article>
         <article class="card track" data-component="card">
-          <span class="tag" data-i18n="focus3.tag">Supporting methods</span>
-          <h3 data-i18n="focus3.title">Efficient Multimodal Inference</h3>
-          <p data-i18n="focus3.desc">Studying whether compressed visual representations preserve the information needed for later reasoning.</p>
+          <span class="tag" data-i18n="focus3.tag">Embodied reasoning</span>
+          <h3 data-i18n="focus3.title">Human-Aware Navigation</h3>
+          <p data-i18n="focus3.desc">How can language-guided agents navigate dynamic environments safely around people?</p>
           <ul>
-            <li data-i18n="focus3.i1">Visual compression and information loss</li>
-            <li data-i18n="focus3.i2">Draft-target behavior in speculative decoding</li>
+            <li data-i18n="focus3.i1">Human-motion data and DAgger-based imitation learning</li>
+            <li data-i18n="focus3.i2">Navigation success, error, and collision evaluation</li>
           </ul>
         </article>
       </div>
@@ -425,8 +431,8 @@
 
     <!-- RESEARCH EXPERIENCE -->
     <section class="wrap" id="experience" data-component="section">
-      <span class="sec-label" data-i18n="rex.label">Research experience</span>
-      <h2 class="sec-head" data-i18n="rex.heading">Projects, responsibilities, and results.</h2>
+      <span class="sec-label" data-i18n="rex.label">Selected research</span>
+      <h2 class="sec-head" data-i18n="rex.heading">Projects and my contributions.</h2>
       <div class="timeline">
         <article class="card exp" data-component="card">
           <div class="exp-period">Apr 2026 - Present</div>
@@ -434,16 +440,15 @@
             <h3 data-i18n="r1.role">Undergraduate Research Assistant</h3>
             <p class="exp-org">Multimodal Intelligence Lab (MILab), University of Washington · PI: Zhi-Qi Cheng</p>
             <div class="exp-project">
-              <div class="project-head"><h4 data-i18n="ha.title">Human-Aware Vision-Language Navigation</h4><span data-i18n="ha.status">Ongoing · Planned 2026 submission · Expected second author</span></div>
+              <div class="project-head"><h4 data-i18n="ha.title">Human-Aware Vision-Language Navigation</h4><span data-i18n="ha.status">Ongoing research</span></div>
               <ul class="exp-list">
-                <li data-i18n="ha.b1">Built a low-cost batch 3D motion-retargeting agent with Kimodo and Virtual Community for new VLN scenes.</li>
-                <li data-i18n="ha.b2">Automated avatar retargeting and motion-data preparation to reduce manual environment setup.</li>
-                <li data-i18n="ha.b3">Audited and repaired 300 human-motion samples and standardized formats and quality-control rules.</li>
-                <li data-i18n="ha.b4">Train and evaluate VLN models via DAgger-based imitation learning; maintain experiment logs and navigation demos.</li>
+                <li data-i18n="ha.b1">Built a low-cost 3D motion-retargeting pipeline using Kimodo and Virtual Community; automated data preparation and audited and repaired 300 human-motion samples.</li>
+                <li data-i18n="ha.b2">Trained and evaluated Speaker-Follower, Rec-PREVALENT, Rec-OSCAR, AirBERT, and HAMT with DAgger-based imitation learning in HA-VLN 3.0’s DE environment.</li>
+                <li data-i18n="ha.b3">Improved mean success rate by 6.15 percentage points across the five models, with consistently lower navigation error and collision metrics after training.</li>
               </ul>
             </div>
             <div class="exp-project">
-              <div class="project-head"><h4 data-i18n="vispec.title">Multimodal Speculative Decoding Improvement</h4><span data-i18n="vispec.status">Ongoing · Planned 2026 submission · Expected co-first author</span></div>
+              <div class="project-head"><h4 data-i18n="vispec.title">Multimodal Speculative Decoding Improvement</h4><span data-i18n="vispec.status">Ongoing research</span></div>
               <ul class="exp-list">
                 <li data-i18n="vispec.b1">Surveyed multimodal speculative-decoding and sampling methods to identify limitations in the ViSpec baseline.</li>
                 <li data-i18n="vispec.b2">Formulated an objective linking visual-compression quality with draft-target model behavior.</li>
@@ -455,18 +460,14 @@
         <article class="card exp" data-component="card">
           <div class="exp-period">Feb 2026 - Present</div>
           <div class="exp-body">
-            <h3 data-i18n="r2.role">Undergraduate Research Collaborator</h3>
-            <p class="exp-org">Institute of Automation, Chinese Academy of Sciences · Advisor: Ning Yang</p>
+            <h3 data-i18n="r2.role">Independent Researcher</h3>
+            <p class="exp-org" data-i18n="math.affiliation">Mathematical reasoning and tool-using agents</p>
             <div class="exp-project">
-              <div class="project-head"><h4 data-i18n="math.title">MATH-LWM-AGENT: Efficient Mathematical Tool Agent</h4><span data-i18n="math.status">First author · Submitted to AAAI 2027</span></div>
+              <div class="project-head"><h4 data-i18n="math.title">MATH-LWM-AGENT: Efficient Mathematical Tool Agent</h4><span data-i18n="math.status">Sole author · Under review at AAAI 2027</span></div>
               <ul class="exp-list">
-                <li data-i18n="math.b1">Conceived and led a training-free mathematical agent that predicts tool outcomes before execution.</li>
-                <li data-i18n="math.b2">Designed a residual controller that turns prediction-execution mismatch into state for subsequent reasoning.</li>
-                <li data-i18n="math.b3">Implemented the runtime and integrated Python, SymPy, and verification tools.</li>
-                <li data-i18n="math.b4">Led experiment design, ablations, cost accounting, evidence audits, and manuscript preparation.</li>
-                <li data-i18n="math.b5">With thinking disabled, improved HMMT by 52.13 percentage points.</li>
-                <li data-i18n="math.b6">Improved IMO-AnswerBench by 35.85 percentage points and IMO-ProofBench by 1.22/7.</li>
-                <li data-i18n="math.b7">Residual control reduced model calls per correct by 9.41% and joint inference cost by 10.18%.</li>
+                <li data-i18n="math.b1">Conceived and led a training-free mathematical tool agent that predicts tool outcomes and uses prediction–execution residuals to guide subsequent reasoning.</li>
+                <li data-i18n="math.b2">Implemented the runtime, residual controller, and Python, SymPy, and verification-tool integrations; led experiments, ablations, cost accounting, evidence audits, and manuscript preparation.</li>
+                <li data-i18n="math.b3">With thinking disabled, improved HMMT by 52.13 percentage points and IMO-AnswerBench by 35.85 percentage points.</li>
               </ul>
             </div>
           </div>
@@ -477,11 +478,19 @@
             <h3 data-i18n="r3.role">Research Assistant</h3>
             <p class="exp-org">NUS LinS Lab &amp; RoboScience Lab · PI: Lin Shao · Shenzhen, China</p>
             <div class="exp-project">
-              <div class="project-head"><h4 data-i18n="wam.title">WAM RL</h4><span data-i18n="wam.status">Ongoing · Planned 2026 submission · Expected third author</span></div>
+              <div class="project-head"><h4 data-i18n="wam.title">WAQ: Unified World–Action–Critic Model</h4><span data-i18n="wam.status">Sixth author · Planned submission</span></div>
               <ul class="exp-list">
-                <li data-i18n="wam.b1">Lead xArm and xHand data collection, cleaning, and organization for robot-manipulation training.</li>
-                <li data-i18n="wam.b2">Lead real-robot deployment on xArm, xHand, and Franka platforms for WAM experiments.</li>
-                <li data-i18n="wam.b3">Participate in real-robot SFT and RL training for WAM, supporting iterative data-to-deployment cycles.</li>
+                <li data-i18n="wam.b1">Owned the end-to-end experimental pipeline for four embodiments across five manipulation settings: data collection and curation, video–action SFT, offline RL critic refinement, deployment, evaluation, and demonstrations.</li>
+                <li data-i18n="wam.b2">Performed video–action supervised fine-tuning followed by offline-RL critic refinement with the video–action backbone frozen, for xArm-gripper, bimanual xArm-gripper, xHand, and xHand with FingerEye.</li>
+                <li data-i18n="wam.b3">In the reported xArm–xHand eggplant-to-cup evaluation, WAQ achieved 70% full-task success versus 20% for LingBot-VA.</li>
+              </ul>
+            </div>
+            <div class="exp-project">
+              <div class="project-head"><h4 data-i18n="crl.title">CRL-VLA: Continual Vision–Language–Action Learning</h4><span data-i18n="crl.status">Fourth author · Submitted to ICLR 2027</span></div>
+              <ul class="exp-list">
+                <li data-i18n="crl.b1">Owned the offline and online RL real-robot pipeline on xarm-gripper, from data collection and training to deployment and checkpoint-level evaluation; trained baseline and CRL-VLA policies.</li>
+                <li data-i18n="crl.b2">Contributed to method and real-robot experiment design for continual VLA learning with a frozen retention critic and a trainable adaptation critic.</li>
+                <li data-i18n="crl.b3">Five-task offline xArm evaluation: 58% mean final task success versus 34% for the baseline, and 82% versus 60% grasp success. These real-robot comparisons are descriptive single-run evaluations.</li>
               </ul>
             </div>
           </div>
@@ -500,10 +509,10 @@
             <h3 data-i18n="wordplay.role">Open-Source Project Maintainer</h3>
             <p class="exp-org">Wordplay · with Prof. Amy J. Ko · Seattle, WA</p>
             <ul class="exp-list">
-              <li data-i18n="wordplay.b1">Contribute code and maintain an open-source educational programming language and IDE.</li>
-              <li data-i18n="wordplay.b2">Review accessibility and multilingual typography issues in learner-facing interactions.</li>
-              <li data-i18n="wordplay.b3">Propose product and usability improvements for the editor and learning workflow.</li>
-              <li data-i18n="wordplay.b4">Translate findings into scoped implementation tasks and maintainable code changes.</li>
+              <li data-i18n="wordplay.b1">Contributed code to and maintained Amy J. Ko’s open-source educational programming language and IDE.</li>
+              <li data-i18n="wordplay.b2">Reviewed accessibility and multilingual typography issues in learner-facing interactions.</li>
+              <li data-i18n="wordplay.b3">Proposed product and usability improvements for the editor and learning workflow.</li>
+              <li data-i18n="wordplay.b4">Translated findings into scoped implementation tasks and maintainable code changes.</li>
             </ul>
             <a class="exp-link" href="https://github.com/wd041216-bit/wordplay" target="_blank" rel="noopener" data-i18n="link.wordplay">Wordplay on GitHub ↗</a>
           </div>
@@ -565,11 +574,11 @@
       <div class="skills">
         <div class="card skill" data-component="card">
           <h3 data-i18n="sk1.title">Research Areas</h3>
-          <div class="tags"><span>Embodied World Models</span><span>Multimodal Reasoning</span><span>Vision-Language Navigation</span></div>
+          <div class="tags"><span>World Models</span><span>VLA Learning</span><span>Vision-Language Navigation</span></div>
         </div>
         <div class="card skill" data-component="card">
-          <h3 data-i18n="sk2.title">Embodied Data</h3>
-          <div class="tags"><span>3D Motion Retargeting</span><span>Human-Motion Data</span><span>Data Quality</span><span>Navigation Evaluation</span></div>
+          <h3 data-i18n="sk2.title">Robot Learning</h3>
+          <div class="tags"><span>Real-Robot Evaluation</span><span>Data Curation</span><span>Imitation Learning</span><span>Offline &amp; Online RL</span></div>
         </div>
         <div class="card skill" data-component="card">
           <h3 data-i18n="sk3.title">Model Analysis</h3>
@@ -598,7 +607,7 @@
         <div class="card closing-card contact-card" id="contact" data-component="card">
           <span class="sec-label" data-i18n="contact.label">Contact</span>
           <h2 data-i18n="contact.heading">Let's talk research.</h2>
-          <p data-i18n="contact.p">I am preparing for 2027 PhD applications and welcome research conversations about embodied world models, multimodal reasoning, and vision-language navigation.</p>
+          <p data-i18n="contact.p">I am seeking 2027 PhD opportunities in embodied AI, especially world models, continual VLA learning, and reliable real-world robot behavior.</p>
           <div class="contact-links">
             <a class="btn btn-primary" href="mailto:wd041216@uw.edu" data-i18n="contact.c1">Email me</a>
             <a class="btn btn-ghost" href="https://github.com/wd041216-bit" target="_blank" rel="noopener" data-i18n="contact.c2">GitHub</a>
@@ -609,172 +618,244 @@
   </main>
 
   <footer>
-    <div class="wrap" data-i18n="footer.note">© 2026 Da Wei · Seattle, WA</div>
+    <div class="wrap" data-i18n="footer.note">© 2026 Da Wei · University of Washington</div>
   </footer>
 
 <script>
   const I18N = {
-    en: {
-      "wam.b3": "Participate in real-robot SFT and RL training for WAM, supporting iterative data-to-deployment cycles.",
-      "wam.b2": "Lead real-robot deployment on xArm, xHand, and Franka platforms for WAM experiments.",
-      "wam.b1": "Lead xArm and xHand data collection, cleaning, and organization for robot-manipulation training.",
-      "wam.status": "Ongoing · Planned 2026 submission · Expected third author",
-      "wam.title": "WAM RL",
-      "r3.role": "Research Assistant",
-      "edu.exchange": "Exchange Student · Fall 2026 · Hong Kong SAR",
-      "edu.cuhk": "The Chinese University of Hong Kong",
-      "hero.cv": "Download CV (PDF)",
-      "nav.about": "About", "nav.work": "Research", "nav.experience": "Experience", "nav.skills": "Skills", "nav.contact": "Contact",
-      "hero.status": "Seeking 2027 PhD opportunities in embodied AI",
-      "hero.title": "Undergraduate AI Researcher | World Models & VLN",
-      "hero.sub": "I am interested in world models and multimodal reasoning that help navigation agents anticipate future states and make better decisions.",
-      "hero.cta1": "Explore research", "hero.cta2": "View experience",
-      "about.label": "About", "about.heading": "I work on prediction for embodied action.",
-      "about.p1": "I'm an Informatics undergraduate at the University of Washington, graduating in 2027. My research interests are embodied AI, world models, and vision-and-language navigation. At UW's Multimodal Intelligence Lab, I work with Zhi-Qi Cheng on human-aware navigation and multimodal speculative decoding.",
-      "about.p2": "I also collaborate with Ning Yang at the Institute of Automation, Chinese Academy of Sciences, where I led MATH-LWM-AGENT. At NUS LinS Lab and RoboScience Lab, I work with Lin Shao on WAM RL, including robot data collection, real-robot deployment, and SFT/RL training.",
-      "about.eduTitle": "Education", "about.eduExpected": "Expected graduation",
-      "focus.label": "Research focus", "focus.heading": "One question ties my work together.",
-      "focus1.tag": "Research direction", "focus1.title": "Embodied World Models",
-      "focus1.desc": "How can predictive world models improve reasoning and decision-making in vision-and-language navigation?",
-      "focus1.i1": "Language-grounded state and memory", "focus1.i2": "Future-state prediction for action",
-      "focus2.tag": "MILab · UW", "focus2.title": "HA-VLN 3.0",
-      "focus2.desc": "Human-aware navigation in dynamic environments with people and social constraints.",
-      "focus2.i1": "3D human-motion data and quality control", "focus2.i2": "VLN training, evaluation, and demos",
-      "focus3.tag": "Supporting methods", "focus3.title": "Efficient Multimodal Inference",
-      "focus3.desc": "Studying whether compressed visual representations preserve the information needed for later reasoning.",
-      "focus3.i1": "Visual compression and information loss", "focus3.i2": "Draft-target behavior in speculative decoding",
-      "rex.label": "Research experience", "rex.heading": "Projects, responsibilities, and results.",
-      "r1.role": "Undergraduate Research Assistant", "r2.role": "Undergraduate Research Collaborator",
-      "ha.title": "Human-Aware Vision-Language Navigation", "ha.status": "Ongoing · Planned 2026 submission · Expected second author",
-      "ha.b1": "Built a low-cost batch 3D motion-retargeting agent with Kimodo and Virtual Community for new VLN scenes.",
-      "ha.b2": "Automated avatar retargeting and motion-data preparation to reduce manual environment setup.",
-      "ha.b3": "Audited and repaired 300 human-motion samples and standardized formats and quality-control rules.",
-      "ha.b4": "Train and evaluate VLN models via DAgger-based imitation learning; maintain experiment logs and navigation demos.",
-      "vispec.title": "Multimodal Speculative Decoding Improvement", "vispec.status": "Ongoing · Planned 2026 submission · Expected co-first author",
-      "vispec.b1": "Surveyed multimodal speculative-decoding and sampling methods to identify limitations in the ViSpec baseline.",
-      "vispec.b2": "Formulated an objective linking visual-compression quality with draft-target model behavior.",
-      "vispec.b3": "Proposed autoencoder-based supervision for the visual adapter to measure and reduce information loss.",
-      "math.title": "MATH-LWM-AGENT: Efficient Mathematical Tool Agent", "math.status": "First author · Submitted to AAAI 2027",
-      "math.b1": "Conceived and led a training-free mathematical agent that predicts tool outcomes before execution.",
-      "math.b2": "Designed a residual controller that turns prediction-execution mismatch into state for subsequent reasoning.",
-      "math.b3": "Implemented the runtime and integrated Python, SymPy, and verification tools.",
-      "math.b4": "Led experiment design, ablations, cost accounting, evidence audits, and manuscript preparation.",
-      "math.b5": "With thinking disabled, improved HMMT by 52.13 percentage points.",
-      "math.b6": "Improved IMO-AnswerBench by 35.85 percentage points and IMO-ProofBench by 1.22/7.",
-      "math.b7": "Residual control reduced model calls per correct by 9.41% and joint inference cost by 10.18%.",
-      "link.math": "MATH-LWM-AGENT on GitHub ↗", "link.wordplay": "Wordplay on GitHub ↗", "link.website": "Visit website ↗",
-      "lead.label": "Open source & leadership", "lead.heading": "Work beyond the research lab.",
-      "wordplay.role": "Open-Source Project Maintainer",
-      "wordplay.b1": "Contribute code and maintain an open-source educational programming language and IDE.",
-      "wordplay.b2": "Review accessibility and multilingual typography issues in learner-facing interactions.",
-      "wordplay.b3": "Propose product and usability improvements for the editor and learning workflow.",
-      "wordplay.b4": "Translate findings into scoped implementation tasks and maintainable code changes.",
-      "media.role": "Founder & Content Creator",
-      "media.b1": "Founded a social-media channel focused on undergraduate applications and international-student life.",
-      "media.b2": "Grew the WeChat Channels audience to approximately 5,000 followers.",
-      "media.b3": "Explain complex application and university-life topics for a broad student audience.",
-      "media.b4": "Share firsthand insights and experiences from research-lab work.",
-      "ind.label": "Industry experience", "ind.heading": "Systems built for real users.",
-      "yc.role": "Project Lead", "web.title": "Multilingual Corporate Website",
-      "web.b1": "Built and maintain a Chinese-English-Vietnamese website for cross-regional branding.",
-      "web.b2": "Centralized PU, TPU, microfiber, sustainability, production-capacity, and inquiry information.",
-      "web.b3": "Designed page hierarchy, information architecture, and navigation for faster product discovery.",
-      "web.b4": "Maintain the portal as a global business entry point for overseas clients.",
-      "erp.title": "ERP Management Prototype", "erp.status": "China operations · 100+ users",
-      "erp.b1": "Built and iteratively deployed an ERP prototype used by 100+ employees across the company's China operations.",
-      "erp.b2": "Digitized the order-to-reconciliation flow across sales, procurement, quality inspection, warehouse dispatch, and finance.",
-      "erp.b3": "Converted fragmented practices into standardized system workflows and SOPs with clear ownership and handoffs.",
-      "erp.b4": "Used live operations to uncover management gaps and refine controls, improving management visibility and consistency.",
-      "skills.label": "Skills", "skills.heading": "What I work with.",
-      "sk1.title": "Research Areas", "sk2.title": "Embodied Data", "sk3.title": "Model Analysis", "sk4.title": "Programming & Tools",
-      "additional.label": "Additional", "additional.heading": "Outside the lab.",
-      "additional.scuba": "Scuba diving", "additional.surfing": "Surfing", "additional.skiing": "Skiing", "additional.license": "Valid driver's license",
-      "contact.label": "Contact", "contact.heading": "Let's talk research.",
-      "contact.p": "I am preparing for 2027 PhD applications and welcome research conversations about embodied world models, multimodal reasoning, and vision-language navigation.",
-      "contact.c1": "Email me", "contact.c2": "GitHub",
-      "footer.note": "© 2026 Da Wei · Seattle, WA"
+    "en": {
+        "wam.b3": "In the reported xArm–xHand eggplant-to-cup evaluation, WAQ achieved 70% full-task success versus 20% for LingBot-VA.",
+        "wam.b2": "Performed video–action supervised fine-tuning followed by offline-RL critic refinement with the video–action backbone frozen, for xArm-gripper, bimanual xArm-gripper, xHand, and xHand with FingerEye.",
+        "wam.b1": "Owned the end-to-end experimental pipeline for four embodiments across five manipulation settings: data collection and curation, video–action SFT, offline RL critic refinement, deployment, evaluation, and demonstrations.",
+        "wam.status": "Sixth author · Planned submission",
+        "wam.title": "WAQ: Unified World–Action–Critic Model",
+        "r3.role": "Research Assistant",
+        "edu.exchange": "Exchange Student · Fall 2026 · Hong Kong SAR",
+        "edu.cuhk": "The Chinese University of Hong Kong",
+        "hero.cv": "Download CV (PDF)",
+        "nav.about": "About",
+        "nav.work": "Research",
+        "nav.experience": "Experience",
+        "nav.skills": "Skills",
+        "nav.contact": "Contact",
+        "hero.status": "Seeking 2027 PhD opportunities in embodied AI",
+        "hero.title": "Undergraduate AI Researcher | World Models & VLA",
+        "hero.sub": "I study how predictive models, continual learning, and multimodal reasoning can help robots adapt and act reliably in the physical world.",
+        "hero.cta1": "Selected research",
+        "hero.cta2": "Email me",
+        "about.label": "About",
+        "about.heading": "Prediction, adaptation, and real-world action.",
+        "about.p1": "I'm an Informatics undergraduate at the University of Washington, graduating in 2027. My research focuses on embodied AI, world models, and vision-language-action learning, with hands-on work in robot manipulation and human-aware navigation.",
+        "about.p2": "At UW’s Multimodal Intelligence Lab, I work with Zhi-Qi Cheng on human-aware navigation and efficient multimodal inference. I independently developed MATH-LWM-AGENT as its sole author. At NUS LinS Lab and RoboScience Lab, I work with Lin Shao on world-action models and continual VLA learning.",
+        "about.eduTitle": "Education",
+        "about.eduExpected": "Expected graduation",
+        "focus.label": "Research focus",
+        "focus.heading": "Learning to predict, adapt, and act.",
+        "focus1.tag": "World models",
+        "focus1.title": "Prediction for Action",
+        "focus1.desc": "How can models of future observations and action outcomes support reliable robot behavior?",
+        "focus1.i1": "World-action modeling and critic-guided generation",
+        "focus1.i2": "Real-robot data, training, deployment, and evaluation",
+        "focus2.tag": "Continual learning",
+        "focus2.title": "Adaptive VLA Policies",
+        "focus2.desc": "How can vision-language-action policies learn new tasks while retaining previously learned skills?",
+        "focus2.i1": "Offline and online reinforcement learning",
+        "focus2.i2": "Adaptation and retention on real robots",
+        "focus3.tag": "Embodied reasoning",
+        "focus3.title": "Human-Aware Navigation",
+        "focus3.desc": "How can language-guided agents navigate dynamic environments safely around people?",
+        "focus3.i1": "Human-motion data and DAgger-based imitation learning",
+        "focus3.i2": "Navigation success, error, and collision evaluation",
+        "rex.label": "Selected research",
+        "rex.heading": "Projects and my contributions.",
+        "r1.role": "Undergraduate Research Assistant",
+        "r2.role": "Independent Researcher",
+        "ha.title": "Human-Aware Vision-Language Navigation",
+        "ha.status": "Ongoing research",
+        "ha.b1": "Built a low-cost 3D motion-retargeting pipeline using Kimodo and Virtual Community; automated data preparation and audited and repaired 300 human-motion samples.",
+        "ha.b2": "Trained and evaluated Speaker-Follower, Rec-PREVALENT, Rec-OSCAR, AirBERT, and HAMT with DAgger-based imitation learning in HA-VLN 3.0’s DE environment.",
+        "ha.b3": "Improved mean success rate by 6.15 percentage points across the five models, with consistently lower navigation error and collision metrics after training.",
+        "vispec.title": "Multimodal Speculative Decoding Improvement",
+        "vispec.status": "Ongoing research",
+        "vispec.b1": "Surveyed multimodal speculative-decoding and sampling methods to identify limitations in the ViSpec baseline.",
+        "vispec.b2": "Formulated an objective linking visual-compression quality with draft-target model behavior.",
+        "vispec.b3": "Proposed autoencoder-based supervision for the visual adapter to measure and reduce information loss.",
+        "math.title": "MATH-LWM-AGENT: Efficient Mathematical Tool Agent",
+        "math.status": "Sole author · Under review at AAAI 2027",
+        "math.b1": "Conceived and led a training-free mathematical tool agent that predicts tool outcomes and uses prediction–execution residuals to guide subsequent reasoning.",
+        "math.b2": "Implemented the runtime, residual controller, and Python, SymPy, and verification-tool integrations; led experiments, ablations, cost accounting, evidence audits, and manuscript preparation.",
+        "math.b3": "With thinking disabled, improved HMMT by 52.13 percentage points and IMO-AnswerBench by 35.85 percentage points.",
+        "link.math": "MATH-LWM-AGENT on GitHub ↗",
+        "link.wordplay": "Wordplay on GitHub ↗",
+        "link.website": "Visit website ↗",
+        "lead.label": "Open source & leadership",
+        "lead.heading": "Work beyond the research lab.",
+        "wordplay.role": "Open-Source Project Maintainer",
+        "wordplay.b1": "Contributed code to and maintained Amy J. Ko’s open-source educational programming language and IDE.",
+        "wordplay.b2": "Reviewed accessibility and multilingual typography issues in learner-facing interactions.",
+        "wordplay.b3": "Proposed product and usability improvements for the editor and learning workflow.",
+        "wordplay.b4": "Translated findings into scoped implementation tasks and maintainable code changes.",
+        "media.role": "Founder & Content Creator",
+        "media.b1": "Founded a social-media channel focused on undergraduate applications and international-student life.",
+        "media.b2": "Grew the WeChat Channels audience to approximately 5,000 followers.",
+        "media.b3": "Explain complex application and university-life topics for a broad student audience.",
+        "media.b4": "Share firsthand insights and experiences from research-lab work.",
+        "ind.label": "Industry experience",
+        "ind.heading": "Systems built for real users.",
+        "yc.role": "Project Lead",
+        "web.title": "Multilingual Corporate Website",
+        "web.b1": "Built and maintain a Chinese-English-Vietnamese website for cross-regional branding.",
+        "web.b2": "Centralized PU, TPU, microfiber, sustainability, production-capacity, and inquiry information.",
+        "web.b3": "Designed page hierarchy, information architecture, and navigation for faster product discovery.",
+        "web.b4": "Maintain the portal as a global business entry point for overseas clients.",
+        "erp.title": "ERP Management Prototype",
+        "erp.status": "China operations · 100+ users",
+        "erp.b1": "Built and iteratively deployed an ERP prototype used by 100+ employees across the company's China operations.",
+        "erp.b2": "Digitized the order-to-reconciliation flow across sales, procurement, quality inspection, warehouse dispatch, and finance.",
+        "erp.b3": "Converted fragmented practices into standardized system workflows and SOPs with clear ownership and handoffs.",
+        "erp.b4": "Used live operations to uncover management gaps and refine controls, improving management visibility and consistency.",
+        "skills.label": "Skills",
+        "skills.heading": "What I work with.",
+        "sk1.title": "Research Areas",
+        "sk2.title": "Robot Learning",
+        "sk3.title": "Model Analysis",
+        "sk4.title": "Programming & Tools",
+        "additional.label": "Additional",
+        "additional.heading": "Outside the lab.",
+        "additional.scuba": "Scuba diving",
+        "additional.surfing": "Surfing",
+        "additional.skiing": "Skiing",
+        "additional.license": "Valid driver's license",
+        "contact.label": "Contact",
+        "contact.heading": "Let's talk research.",
+        "contact.p": "I am seeking 2027 PhD opportunities in embodied AI, especially world models, continual VLA learning, and reliable real-world robot behavior.",
+        "contact.c1": "Email me",
+        "contact.c2": "GitHub",
+        "footer.note": "© 2026 Da Wei · University of Washington",
+        "crl.title": "CRL-VLA: Continual Vision–Language–Action Learning",
+        "crl.status": "Fourth author · Submitted to ICLR 2027",
+        "crl.b1": "Owned the offline and online RL real-robot pipeline on xarm-gripper, from data collection and training to deployment and checkpoint-level evaluation; trained baseline and CRL-VLA policies.",
+        "crl.b2": "Contributed to method and real-robot experiment design for continual VLA learning with a frozen retention critic and a trainable adaptation critic.",
+        "crl.b3": "Five-task offline xArm evaluation: 58% mean final task success versus 34% for the baseline, and 82% versus 60% grasp success. These real-robot comparisons are descriptive single-run evaluations.",
+        "math.affiliation": "Mathematical reasoning and tool-using agents"
     },
-    zh: {
-      "wam.b3": "参与 WAM 真机 SFT 与 RL 训练，支持从数据到部署的迭代。",
-      "wam.b2": "负责 WAM 实验在 xArm、xHand 和 Franka 平台上的真机部署。",
-      "wam.b1": "负责 xArm 与 xHand 的数据采集、清洗和整理，用于机器人操作训练。",
-      "wam.status": "进行中 · 计划 2026 年投稿 · 预计第三作者",
-      "wam.title": "WAM RL",
-      "r3.role": "科研助理",
-      "edu.exchange": "交换学生 · 2026 年秋季 · 中国香港",
-      "edu.cuhk": "香港中文大学",
-      "hero.cv": "下载英文简历（PDF）",
-      "nav.about": "关于", "nav.work": "研究", "nav.experience": "经历", "nav.skills": "能力", "nav.contact": "联系",
-      "hero.status": "正在准备 2027 年具身 AI 博士申请",
-      "hero.title": "本科 AI 研究者｜世界模型与视觉语言导航",
-      "hero.sub": "我希望研究世界模型与多模态推理如何帮助导航智能体预测未来状态并做出更好的决策。",
-      "hero.cta1": "查看研究方向", "hero.cta2": "查看经历",
-      "about.label": "关于我", "about.heading": "我关注预测如何服务具身行动。",
-      "about.p1": "我是华盛顿大学 Informatics 本科生，预计 2027 年毕业，研究兴趣是具身 AI、世界模型与视觉语言导航。在 UW 多模态智能实验室，我跟随 Zhi-Qi Cheng 研究人类感知导航与多模态投机解码。",
-      "about.p2": "我还与中国科学院自动化研究所的 Ning Yang 合作，主导 MATH-LWM-AGENT 项目。在 NUS LinS Lab 与 RoboScience Lab，我跟随 Lin Shao 参与 WAM RL，负责机器人数据采集与真机部署，并参与 SFT 和 RL 训练。",
-      "about.eduTitle": "教育", "about.eduExpected": "预计毕业",
-      "focus.label": "研究方向", "focus.heading": "一个问题串起了我目前的研究。",
-      "focus1.tag": "研究方向", "focus1.title": "具身世界模型",
-      "focus1.desc": "预测式世界模型如何改善视觉语言导航中的推理与决策？",
-      "focus1.i1": "语言对齐的状态与记忆", "focus1.i2": "服务行动的未来状态预测",
-      "focus2.tag": "MILab · 华盛顿大学", "focus2.title": "HA-VLN 3.0",
-      "focus2.desc": "在包含人类活动与社会约束的动态环境中进行导航。",
-      "focus2.i1": "3D 人体动作数据与质量控制", "focus2.i2": "VLN 训练、评测与导航演示",
-      "focus3.tag": "支撑方法", "focus3.title": "高效多模态推理",
-      "focus3.desc": "研究压缩后的视觉表示能否保留后续推理所需的信息。",
-      "focus3.i1": "视觉压缩与信息损失", "focus3.i2": "投机解码中的草稿—目标模型行为",
-      "rex.label": "科研经历", "rex.heading": "项目、职责与结果。",
-      "r1.role": "本科科研助理", "r2.role": "本科研究合作者",
-      "ha.title": "人类感知视觉语言导航", "ha.status": "进行中 · 计划 2026 年投稿 · 预计第二作者",
-      "ha.b1": "使用 Kimodo 与 Virtual Community 为新 VLN 场景构建低成本批量 3D 动作重定向 Agent。",
-      "ha.b2": "自动化角色动作重定向和动作数据准备，减少人工搭建环境的工作量。",
-      "ha.b3": "审核并修复 300 个人体动作样本，统一数据格式与质量控制规则。",
-      "ha.b4": "通过基于 DAgger 的模仿学习训练和评测 VLN 模型，维护实验日志与导航演示。",
-      "vispec.title": "多模态投机解码改进", "vispec.status": "进行中 · 计划 2026 年投稿 · 预计共同第一作者",
-      "vispec.b1": "调研多模态投机解码与采样方法，定位 ViSpec 基线的局限。",
-      "vispec.b2": "提出连接视觉压缩质量与草稿—目标模型行为的研究目标。",
-      "vispec.b3": "为视觉适配器提出自编码器监督，用于测量并减少信息损失。",
-      "math.title": "MATH-LWM-AGENT：高效数学工具 Agent", "math.status": "第一作者 · 已投稿 AAAI 2027",
-      "math.b1": "构思并主导无需训练的数学 Agent，在工具执行前预测结果。",
-      "math.b2": "设计残差控制器，将预测—执行失配写入后续推理状态。",
-      "math.b3": "实现运行时并集成 Python、SymPy 和验证工具。",
-      "math.b4": "负责实验设计、消融、成本核算、证据审计与论文准备。",
-      "math.b5": "关闭 thinking 后，HMMT 准确率提高 52.13 个百分点。",
-      "math.b6": "IMO-AnswerBench 提高 35.85 个百分点，IMO-ProofBench 提高 1.22/7。",
-      "math.b7": "残差控制使每道正确题的模型调用量减少 9.41%，联合推理成本减少 10.18%。",
-      "link.math": "在 GitHub 查看 MATH-LWM-AGENT ↗", "link.wordplay": "在 GitHub 查看 Wordplay ↗", "link.website": "访问网站 ↗",
-      "lead.label": "开源与领导力", "lead.heading": "科研之外的长期工作。",
-      "wordplay.role": "开源项目维护者",
-      "wordplay.b1": "参与 Amy J. Ko 教授的开源教育编程语言与 IDE 的开发维护。",
-      "wordplay.b2": "检查面向学习者的无障碍与多语言排版问题。",
-      "wordplay.b3": "为编辑器和学习流程提出产品与可用性改进。",
-      "wordplay.b4": "将发现转化为范围明确、便于维护的实现任务。",
-      "media.role": "创始人与内容创作者",
-      "media.b1": "创办聚焦本科申请与留学生活的教育自媒体账号。",
-      "media.b2": "将微信视频号受众增长至约 5,000 人。",
-      "media.b3": "面向学生受众解释复杂的申请与大学生活话题。",
-      "media.b4": "分享自己在科研实验室工作的亲身经历与体会。",
-      "ind.label": "行业经历", "ind.heading": "为真实用户交付的系统。",
-      "yc.role": "项目负责人", "web.title": "多语言企业官网",
-      "web.b1": "建设并维护中英越三语网站，服务跨区域品牌传播。",
-      "web.b2": "集中呈现 PU、TPU、超纤、可持续性、产能与询盘信息。",
-      "web.b3": "设计页面层级、信息架构与导航，帮助客户更快找到产品。",
-      "web.b4": "持续维护面向海外客户的全球业务入口。",
-      "erp.title": "ERP 管理原型", "erp.status": "中国区业务 · 100+ 用户",
-      "erp.b1": "建设并迭代部署 ERP 原型，服务公司中国区 100 多名员工。",
-      "erp.b2": "数字化销售、采购、质检、仓库发货与财务对账流程。",
-      "erp.b3": "将分散做法转化为职责与交接清晰的标准系统工作流和 SOP。",
-      "erp.b4": "通过实际运营发现管理缺口并调整控制点，提高管理可见性与一致性。",
-      "skills.label": "能力", "skills.heading": "我用什么工作。",
-      "sk1.title": "研究方向", "sk2.title": "具身数据", "sk3.title": "模型分析", "sk4.title": "编程与工具",
-      "additional.label": "其他", "additional.heading": "实验室之外。",
-      "additional.scuba": "水肺潜水", "additional.surfing": "冲浪", "additional.skiing": "滑雪", "additional.license": "持有效驾驶执照",
-      "contact.label": "联系", "contact.heading": "聊聊研究。",
-      "contact.p": "我正在准备 2027 年博士申请，也欢迎围绕具身世界模型、多模态推理与视觉语言导航进行科研交流。",
-      "contact.c1": "给我写信", "contact.c2": "GitHub",
-      "footer.note": "© 2026 Da Wei · Seattle, WA"
+    "zh": {
+        "wam.b3": "在所报告的 xArm–xHand 茄子入杯评估中，WAQ 的完整任务成功率为 70%，LingBot-VA 为 20%。",
+        "wam.b2": "在 xArm-gripper、双臂 xArm-gripper、xHand 和带 FingerEye 的 xHand 上，进行视频–动作监督微调，随后冻结视频–动作骨干网络并开展离线 RL Critic 优化。",
+        "wam.b1": "负责四种机器人形态、五个操作场景的端到端实验流程：数据采集与整理、视频–动作 SFT、离线 RL Critic 优化、部署、评估与演示。",
+        "wam.status": "第六作者 · 计划投稿",
+        "wam.title": "WAQ：统一世界–动作–Critic 模型",
+        "r3.role": "科研助理",
+        "edu.exchange": "交换学生 · 2026 年秋季 · 中国香港",
+        "edu.cuhk": "香港中文大学",
+        "hero.cv": "下载英文简历（PDF）",
+        "nav.about": "关于",
+        "nav.work": "研究",
+        "nav.experience": "经历",
+        "nav.skills": "能力",
+        "nav.contact": "联系",
+        "hero.status": "正在准备 2027 年具身 AI 博士申请",
+        "hero.title": "本科 AI 研究者｜世界模型与视觉语言动作模型",
+        "hero.sub": "我研究如何通过预测模型、持续学习与多模态推理，帮助机器人适应变化，并在物理世界中可靠地行动。",
+        "hero.cta1": "查看研究项目",
+        "hero.cta2": "邮件联系",
+        "about.label": "关于我",
+        "about.heading": "从预测和适应，到真实世界中的行动。",
+        "about.p1": "我是华盛顿大学 Informatics 本科生，预计 2027 年毕业。我的研究聚焦具身 AI、世界模型与视觉语言动作学习，并在机器人操作和人类感知导航中积累了实验经验。",
+        "about.p2": "在 UW 多模态智能实验室，我跟随 Zhi-Qi Cheng 研究人类感知导航与高效多模态推理。我独立完成了 MATH-LWM-AGENT 研究，是该论文的唯一署名作者。在 NUS LinS Lab 与 RoboScience Lab，我跟随 Lin Shao 研究世界动作模型与持续 VLA 学习。",
+        "about.eduTitle": "教育",
+        "about.eduExpected": "预计毕业",
+        "focus.label": "研究方向",
+        "focus.heading": "学习预测、适应与行动。",
+        "focus1.tag": "世界模型",
+        "focus1.title": "服务行动的预测",
+        "focus1.desc": "如何利用对未来观测与动作结果的预测，支持可靠的机器人行为？",
+        "focus1.i1": "世界动作建模与 Critic 引导生成",
+        "focus1.i2": "真机数据、训练、部署与评估",
+        "focus2.tag": "持续学习",
+        "focus2.title": "可适应的 VLA 策略",
+        "focus2.desc": "视觉语言动作策略如何在学习新任务的同时保留已有技能？",
+        "focus2.i1": "离线与在线强化学习",
+        "focus2.i2": "真机上的适应与能力保留",
+        "focus3.tag": "具身推理",
+        "focus3.title": "人类感知导航",
+        "focus3.desc": "语言引导的智能体如何在动态环境中安全地与人共处并完成导航？",
+        "focus3.i1": "人体动作数据与基于 DAgger 的模仿学习",
+        "focus3.i2": "导航成功率、误差与碰撞评估",
+        "rex.label": "研究项目",
+        "rex.heading": "项目与我的贡献。",
+        "r1.role": "本科科研助理",
+        "r2.role": "独立研究者",
+        "ha.title": "人类感知视觉语言导航",
+        "ha.status": "进行中的研究",
+        "ha.b1": "使用 Kimodo 与 Virtual Community 构建低成本 3D 动作重定向流程，自动化数据准备，并审核修复 300 个人体动作样本。",
+        "ha.b2": "在 HA-VLN 3.0 的 DE 环境中，通过基于 DAgger 的模仿学习训练和评估 Speaker-Follower、Rec-PREVALENT、Rec-OSCAR、AirBERT 与 HAMT。",
+        "ha.b3": "五个模型的平均成功率提升 6.15 个百分点，训练后的导航误差与碰撞指标均有降低。",
+        "vispec.title": "多模态投机解码改进",
+        "vispec.status": "进行中的研究",
+        "vispec.b1": "调研多模态投机解码与采样方法，定位 ViSpec 基线的局限。",
+        "vispec.b2": "提出连接视觉压缩质量与草稿—目标模型行为的研究目标。",
+        "vispec.b3": "为视觉适配器提出自编码器监督，用于测量并减少信息损失。",
+        "math.title": "MATH-LWM-AGENT：高效数学工具 Agent",
+        "math.status": "独立作者（唯一署名） · AAAI 2027 审稿中",
+        "math.b1": "构思并主导无需训练的数学工具智能体，预测工具输出，并使用预测与执行之间的残差引导后续推理。",
+        "math.b2": "实现运行时、残差控制器及 Python、SymPy 与验证工具集成，主导实验、消融、成本核算、证据审计与论文准备。",
+        "math.b3": "关闭 thinking 后，HMMT 提升 52.13 个百分点，IMO-AnswerBench 提升 35.85 个百分点。",
+        "link.math": "在 GitHub 查看 MATH-LWM-AGENT ↗",
+        "link.wordplay": "在 GitHub 查看 Wordplay ↗",
+        "link.website": "访问网站 ↗",
+        "lead.label": "开源与领导力",
+        "lead.heading": "科研之外的长期工作。",
+        "wordplay.role": "开源项目维护者",
+        "wordplay.b1": "参与 Amy J. Ko 教授的开源教育编程语言与 IDE 的开发维护。",
+        "wordplay.b2": "检查面向学习者的无障碍与多语言排版问题。",
+        "wordplay.b3": "为编辑器和学习流程提出产品与可用性改进。",
+        "wordplay.b4": "将发现转化为范围明确、便于维护的实现任务。",
+        "media.role": "创始人与内容创作者",
+        "media.b1": "创办聚焦本科申请与留学生活的教育自媒体账号。",
+        "media.b2": "将微信视频号受众增长至约 5,000 人。",
+        "media.b3": "面向学生受众解释复杂的申请与大学生活话题。",
+        "media.b4": "分享自己在科研实验室工作的亲身经历与体会。",
+        "ind.label": "行业经历",
+        "ind.heading": "为真实用户交付的系统。",
+        "yc.role": "项目负责人",
+        "web.title": "多语言企业官网",
+        "web.b1": "建设并维护中英越三语网站，服务跨区域品牌传播。",
+        "web.b2": "集中呈现 PU、TPU、超纤、可持续性、产能与询盘信息。",
+        "web.b3": "设计页面层级、信息架构与导航，帮助客户更快找到产品。",
+        "web.b4": "持续维护面向海外客户的全球业务入口。",
+        "erp.title": "ERP 管理原型",
+        "erp.status": "中国区业务 · 100+ 用户",
+        "erp.b1": "建设并迭代部署 ERP 原型，服务公司中国区 100 多名员工。",
+        "erp.b2": "数字化销售、采购、质检、仓库发货与财务对账流程。",
+        "erp.b3": "将分散做法转化为职责与交接清晰的标准系统工作流和 SOP。",
+        "erp.b4": "通过实际运营发现管理缺口并调整控制点，提高管理可见性与一致性。",
+        "skills.label": "能力",
+        "skills.heading": "我用什么工作。",
+        "sk1.title": "研究方向",
+        "sk2.title": "机器人学习",
+        "sk3.title": "模型分析",
+        "sk4.title": "编程与工具",
+        "additional.label": "其他",
+        "additional.heading": "实验室之外。",
+        "additional.scuba": "水肺潜水",
+        "additional.surfing": "冲浪",
+        "additional.skiing": "滑雪",
+        "additional.license": "持有效驾驶执照",
+        "contact.label": "联系",
+        "contact.heading": "聊聊研究。",
+        "contact.p": "我正在申请 2027 年入学的具身 AI 博士项目，尤其关注世界模型、持续 VLA 学习与可靠的真实世界机器人行为。",
+        "contact.c1": "给我写信",
+        "contact.c2": "GitHub",
+        "footer.note": "© 2026 Da Wei · 华盛顿大学",
+        "crl.title": "CRL-VLA：持续视觉语言动作学习",
+        "crl.status": "第四作者 · 已投稿 ICLR 2027",
+        "crl.b1": "负责 xarm-gripper 的离线与在线 RL 真机实验流程，从数据采集、训练到部署和各检查点评估，并训练基线与 CRL-VLA 策略。",
+        "crl.b2": "参与核心方法与真机实验设计，通过冻结的保留 Critic 与可训练的适应 Critic 支持持续 VLA 学习。",
+        "crl.b3": "五任务离线 xArm 评估中，最终任务平均成功率为 58%，基线为 34%；抓取成功率为 82%，基线为 60%。这些真机比较来自单次运行的描述性评估。",
+        "math.affiliation": "数学推理与工具使用智能体"
     }
-  };
+};
 
   let currentLang = 'en';
   const toggle = document.getElementById('langToggle');
@@ -814,3 +895,4 @@
 </script>
 </body>
 </html>
+
